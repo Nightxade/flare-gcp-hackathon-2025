@@ -12,6 +12,3 @@ wheels/
 .ruff_cache
 .vscode
 .DS_Store
-
-# custom
-secret
