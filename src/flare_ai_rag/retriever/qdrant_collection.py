@@ -3,12 +3,12 @@ import pandas as pd
 import structlog
 from qdrant_client import QdrantClient
 from qdrant_client.models import (
-    SparseVector,
-    PointStruct,
     Distance,
-    VectorParams,
-    SparseVectorParams,
     Modifier,
+    PointStruct,
+    SparseVector,
+    SparseVectorParams,
+    VectorParams,
 )
 
 from flare_ai_rag.ai import (
@@ -17,7 +17,6 @@ from flare_ai_rag.ai import (
     ModelSparseEmbedding,
 )
 from flare_ai_rag.retriever.config import RetrieverConfig
-from flare_ai_rag.settings import settings
 
 logger = structlog.get_logger(__name__)
 

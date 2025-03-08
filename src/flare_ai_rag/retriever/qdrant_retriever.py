@@ -1,7 +1,7 @@
 from typing import override
 
 from qdrant_client import QdrantClient
-from qdrant_client.models import SparseVector, FusionQuery, Fusion, Prefetch
+from qdrant_client.models import Fusion, FusionQuery, Prefetch, SparseVector
 
 from flare_ai_rag.ai import (
     EmbeddingTaskType,

@@ -9,6 +9,7 @@ and message management while maintaining a consistent AI personality.
 from typing import Any, override
 
 import structlog
+from fastembed import SparseEmbedding, SparseTextEmbedding
 from google.generativeai.client import configure
 from google.generativeai.embedding import (
     EmbeddingTaskType,
@@ -18,8 +19,6 @@ from google.generativeai.embedding import (
 )
 from google.generativeai.generative_models import ChatSession, GenerativeModel
 from google.generativeai.types import GenerationConfig
-
-from fastembed import SparseEmbedding, SparseTextEmbedding
 
 from flare_ai_rag.ai.base import BaseAIProvider, ModelResponse
 

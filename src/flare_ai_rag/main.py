@@ -13,7 +13,7 @@ from fastapi import APIRouter, FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from qdrant_client import QdrantClient
 
-from flare_ai_rag.ai import GeminiDenseEmbedding, ModelSparseEmbedding, GeminiProvider
+from flare_ai_rag.ai import GeminiDenseEmbedding, GeminiProvider, ModelSparseEmbedding
 from flare_ai_rag.api import ChatRouter
 from flare_ai_rag.attestation import Vtpm
 from flare_ai_rag.prompts import PromptService

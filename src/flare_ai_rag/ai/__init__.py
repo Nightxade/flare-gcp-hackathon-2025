@@ -2,8 +2,8 @@ from .base import AsyncBaseClient, BaseClient
 from .gemini import (
     EmbeddingTaskType,
     GeminiDenseEmbedding,
-    ModelSparseEmbedding,
     GeminiProvider,
+    ModelSparseEmbedding,
 )
 from .model import Model
 from .openrouter import OpenRouterClient
@@ -13,8 +13,8 @@ __all__ = [
     "BaseClient",
     "EmbeddingTaskType",
     "GeminiDenseEmbedding",
-    "ModelSparseEmbedding",
     "GeminiProvider",
     "Model",
+    "ModelSparseEmbedding",
     "OpenRouterClient",
 ]

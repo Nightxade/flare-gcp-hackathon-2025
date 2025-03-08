@@ -1,7 +1,8 @@
-from firecrawl import FirecrawlApp
-from dotenv import load_dotenv
 import csv
 import os
+
+from dotenv import load_dotenv
+from firecrawl import FirecrawlApp
 
 load_dotenv()
 
