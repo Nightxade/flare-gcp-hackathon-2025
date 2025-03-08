@@ -22,7 +22,7 @@ def find_crawl(url: str):
                 "allowBackwardLinks": False,
                 "allowExternalLinks": False,
                 "scrapeOptions": {
-                    "formats": ["links", "html"],
+                    "formats": ["html"],
                     "excludeTags": ["button"],
                 },
             },
@@ -41,11 +41,10 @@ def save_crawl_results(url: str):
     try:
         with open(output_file, mode="w", newline="", encoding="utf-8") as file:
             writer = csv.writer(file)
-            writer.writerow(["Links", "HTML Content"])
+            writer.writerow(["HTML Content"])
             for page in crawl_result["data"]:
-                links = ", ".join(page.get("links", []))
                 html_content = page.get("html", "No content")
-                writer.writerow([links, html_content])
+                writer.writerow([html_content])
         print(f"Crawl data saved to {output_file}")
     except Exception as e:
         print(f"Error saving data to CSV: {e}")
