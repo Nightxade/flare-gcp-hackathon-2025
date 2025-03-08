@@ -36,9 +36,3 @@
     transform: rotate(360deg);
   }
 }
-
-
-/* ---- custom ---- */
-.max-w-4xl {
-  max-width: 100%;
-}
