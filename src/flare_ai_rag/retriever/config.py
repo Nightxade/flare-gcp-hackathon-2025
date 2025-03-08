@@ -8,6 +8,7 @@ class RetrieverConfig:
 
     dense_embedding_model: str
     sparse_embedding_model: str
+    late_embedding_model: str
     collection_name: str
     vector_size: int
     host: str
@@ -18,6 +19,7 @@ class RetrieverConfig:
         return RetrieverConfig(
             dense_embedding_model=retriever_config["dense_embedding_model"],
             sparse_embedding_model=retriever_config["sparse_embedding_model"],
+            late_embedding_model=retriever_config["late_embedding_model"],
             collection_name=retriever_config["collection_name"],
             vector_size=retriever_config["vector_size"],
             host=retriever_config["host"],

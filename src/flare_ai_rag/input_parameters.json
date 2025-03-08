@@ -5,6 +5,7 @@
     "retriever_config": {
         "dense_embedding_model": "models/text-embedding-004",
         "sparse_embedding_model": "Qdrant/bm42-all-minilm-l6-v2-attentions",
+        "late_embedding_model": "colbert-ir/colbertv2.0",
         "vector_size": 768,
         "collection_name": "docs_collection",
         "host": "localhost",

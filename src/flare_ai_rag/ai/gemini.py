@@ -8,8 +8,9 @@ and message management while maintaining a consistent AI personality.
 
 from typing import Any, override
 
+import numpy.typing as npt
 import structlog
-from fastembed import SparseEmbedding, SparseTextEmbedding
+from fastembed import LateInteractionTextEmbedding, SparseEmbedding, SparseTextEmbedding
 from google.generativeai.client import configure
 from google.generativeai.embedding import (
     EmbeddingTaskType,
@@ -243,3 +244,23 @@ class ModelSparseEmbedding:
         """
         embeddings = list(self.model.passage_embed([contents]))
         return embeddings[0]
+
+class ModelLateEmbedding:
+    def __init__(self, embedding_model: str) -> None:
+        self.model = LateInteractionTextEmbedding(embedding_model)
+
+    def embed_content(
+        self,
+        contents: str,
+    ) -> npt.NDArray[Any]:
+        """
+        Generate late text embeddings
+
+        Args:
+            model (str): The embedding model to use (e.g., "colbert-ir/colbertv2.0").
+            contents (str): The text to be embedded.
+
+        Returns:
+            list[float]: The generated embedding vector.
+        """
+        return next(iter(self.model.passage_embed([contents])))

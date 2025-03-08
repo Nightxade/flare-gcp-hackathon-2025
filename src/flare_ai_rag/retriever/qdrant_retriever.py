@@ -27,7 +27,7 @@ class QdrantRetriever(BaseRetriever):
         self.sparse_embedding_client = sparse_embedding_client
 
     @override
-    def semantic_search(self, query: str, top_k: int = 25) -> list[float]:
+    def semantic_search(self, query: str) -> list[float]:
         """
         Perform semantic search by converting the query into a dense vector
         and searching in Qdrant.
@@ -47,7 +47,7 @@ class QdrantRetriever(BaseRetriever):
 
     @override
     def keyword_search(
-        self, query: str, top_k: int = 25
+        self, query: str
     ) -> tuple[list[int], list[float]]:
         """
         Perform keyword search by converting the query into a sparse vector
@@ -75,8 +75,8 @@ class QdrantRetriever(BaseRetriever):
 
         :return: A list of dictionaries, each representing a retrieved document.
         """
-        semantic_vector = self.semantic_search(query, top_k)
-        keyword_indices, keyword_values = self.keyword_search(query, top_k)
+        semantic_vector = self.semantic_search(query)
+        keyword_indices, keyword_values = self.keyword_search(query)
         keyword_vector = SparseVector(
             indices=keyword_indices,
             values=keyword_values,
@@ -86,9 +86,9 @@ class QdrantRetriever(BaseRetriever):
             Prefetch(
                 query=semantic_vector,
                 using="dense",
-                limit=top_k // 2,
+                limit=top_k,
             ),
-            Prefetch(query=keyword_vector, using="sparse", limit=top_k // 2),
+            Prefetch(query=keyword_vector, using="sparse", limit=top_k),
         ]
 
         results = self.client.query_points(
@@ -101,8 +101,4 @@ class QdrantRetriever(BaseRetriever):
             limit=top_k // 2,
         )
 
-        results = list(
-            map(lambda point: point.model_dump()["payload"], results.points)
-        )[:limit]
-        print(results)
-        return results
+        return [point.model_dump()["payload"] for point in results.points][:limit]
