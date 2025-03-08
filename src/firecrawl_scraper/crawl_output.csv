@@ -1,0 +1,432 @@
+Links,HTML Content
+"https://docs.flare.network/#welcome-to-the-flare-network-documentation, https://github.com/flare-foundation/docs/edit/main/docs/index.md, https://docs.flare.network/tech/flare/, https://docs.flare.network/#for-token-holders, https://docs.flare.network/#user-guides, https://docs.flare.network/user/wallets/how-to-access-flare-network-with-metamask/, https://docs.flare.network/tech/the-flaredrop/, https://docs.flare.network/user/staking/staking-flarestake/, https://docs.flare.network/#for-developers, https://docs.flare.network/#developer-guides, https://dev.flare.network/, https://docs.flare.network/#for-everyone, https://docs.flare.network/#flare-products, https://dev.flare.network/ftso/overview, https://docs.flare.network/tech/data-connector/, https://dev.flare.network/fassets/overview, https://docs.flare.network/#flare-concepts, https://docs.flare.network/user/governance/, https://docs.flare.network/user/claiming-the-flaredrop/, https://docs.flare.network/user/personal-delegation-account/","<!DOCTYPE html><html class=""js-focus-visible js"" lang=""en"" data-js-focus-visible="""">
+<body data-md-color-accent=""indigo"" data-md-color-primary=""indigo"" data-md-color-scheme=""flaredark"" dir=""ltr"" data-md-color-media=""(prefers-color-scheme: dark)"">
+<input autocomplete=""off"" class=""md-toggle"" data-md-toggle=""drawer"" id=""__drawer"" type=""checkbox"">
+<input autocomplete=""off"" class=""md-toggle"" data-md-toggle=""search"" id=""__search"" type=""checkbox"">
+<label class=""md-overlay"" for=""__drawer""></label>
+<div data-md-component=""skip"">
+<a class=""md-skip"" href=""https://docs.flare.network/#welcome-to-the-flare-network-documentation"">
+          Skip to content
+        </a>
+</div>
+<div data-md-component=""announce"">
+</div>
+<!-- Google Tag Manager (noscript) -->
+
+<!-- End Google Tag Manager (noscript) -->
+<!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the ""Software""), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED ""AS IS"", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+<!-- Determine classes -->
+<!-- Header -->
+
+<div class=""md-container"" data-md-component=""container"">
+<main class=""md-main"" data-md-component=""main"">
+<div class=""md-main__inner md-grid"">
+<div class=""md-sidebar md-sidebar--primary"" data-md-component=""sidebar"" data-md-type=""navigation"" style=""top: 8087px;"">
+<div class=""md-sidebar__scrollwrap"">
+<div class=""md-sidebar__inner"">
+
+</div>
+</div>
+</div>
+<div class=""md-sidebar md-sidebar--secondary"" data-md-component=""sidebar"" data-md-type=""toc"" hidden="""" style=""top: 8087px;"">
+<div class=""md-sidebar__scrollwrap"" style=""height: 1867px;"">
+<div class=""md-sidebar__inner"">
+
+</div>
+</div>
+</div>
+<div class=""md-content"" data-md-component=""content"">
+<article class=""md-content__inner md-typeset"">
+<a class=""md-content__button md-icon"" href=""https://github.com/flare-foundation/docs/edit/main/docs/index.md"" title=""Edit this page"" target=""_blank"" rel=""noopener noreferrer"">
+<svg viewBox=""0 0 24 24"" xmlns=""http://www.w3.org/2000/svg""><path d=""M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z""></path></svg>
+</a>
+<h1 id=""welcome-to-the-flare-network-documentation"">Welcome to the Flare Network Documentation<a class=""headerlink"" href=""https://docs.flare.network/#welcome-to-the-flare-network-documentation"" title=""Permanent link"">#</a></h1>
+<p>Flare is the blockchain for data. It is a Layer 1, EVM smart contract platform designed to expand the utility of blockchain. Read more in <a href=""https://docs.flare.network/tech/flare/""><strong>What Is Flare?</strong></a></p>
+<h4 id=""for-token-holders"">For token holders<a class=""headerlink"" href=""https://docs.flare.network/#for-token-holders"" title=""Permanent link"">#</a></h4>
+<div class=""flr-card has-background1"">
+<h2 id=""user-guides"">User Guides<a class=""headerlink"" href=""https://docs.flare.network/#user-guides"" title=""Permanent link"">#</a></h2>
+<p>Step-by-step guides for tools like the Explorer or the different wallets.</p>
+<div class=""flr-card-links"">
+<p>Quick links:</p>
+<ul>
+<li><a href=""https://docs.flare.network/user/wallets/how-to-access-flare-network-with-metamask/"">Metamask</a></li>
+<li><a href=""https://docs.flare.network/tech/the-flaredrop/"">Claiming the FlareDrop</a></li>
+<li><a href=""https://docs.flare.network/user/staking/staking-flarestake/"">Using FlareStake to Stake</a></li>
+</ul>
+</div>
+</div>
+<h4 id=""for-developers"">For developers<a class=""headerlink"" href=""https://docs.flare.network/#for-developers"" title=""Permanent link"">#</a></h4>
+<div class=""flr-card has-background2"">
+<h2 id=""developer-guides"">Developer Guides<a class=""headerlink"" href=""https://docs.flare.network/#developer-guides"" title=""Permanent link"">#</a></h2>
+<p>All developer guides are now in the <a href=""https://dev.flare.network/"" target=""_blank"" rel=""noopener noreferrer"" class=""external-link"">Flare Dev Hub</a>.</p>
+</div>
+<h4 id=""for-everyone"">For everyone<a class=""headerlink"" href=""https://docs.flare.network/#for-everyone"" title=""Permanent link"">#</a></h4>
+<div class=""flr-cards"">
+<div class=""flr-card has-background5"">
+<h2 id=""flare-products"">Flare Products<a class=""headerlink"" href=""https://docs.flare.network/#flare-products"" title=""Permanent link"">#</a></h2>
+<p>Descriptions of Flare’s products</p>
+<div class=""flr-card-links is-vertical"">
+<p>Quick links:</p>
+<ul>
+<li><a href=""https://dev.flare.network/ftso/overview"" target=""_blank"" rel=""noopener noreferrer"" class=""external-link"">FTSO</a></li>
+<li><a href=""https://docs.flare.network/tech/data-connector/"">Flare Data Connector</a></li>
+<li><a href=""https://dev.flare.network/fassets/overview"" target=""_blank"" rel=""noopener noreferrer"" class=""external-link"">FAssets</a></li>
+</ul>
+</div>
+</div>
+<div class=""flr-card has-background6"">
+<h2 id=""flare-concepts"">Flare Concepts<a class=""headerlink"" href=""https://docs.flare.network/#flare-concepts"" title=""Permanent link"">#</a></h2>
+<p>Descriptions of Flare’s key concepts, technology and tools</p>
+<div class=""flr-card-links is-vertical"">
+<p>Quick links:</p>
+<ul>
+<li><a href=""https://docs.flare.network/user/governance/"">Governance</a></li>
+<li><a href=""https://docs.flare.network/user/claiming-the-flaredrop/"">The FlareDrop</a></li>
+<li><a href=""https://docs.flare.network/user/personal-delegation-account/"">Personal Delegation Accounts</a></li>
+</ul>
+</div>
+</div>
+<p>These pages are a <strong>Work In Progress</strong>.
+Use the contact buttons at the bottom of the page if there is anything you cannot find here!</p>
+
+</div>
+
+</article>
+</div>
+
+
+</div>
+
+</main>
+
+</div>
+<div class=""md-dialog"" data-md-component=""dialog"">
+<div class=""md-dialog__inner md-typeset""></div>
+</div>
+<div class=""md-consent"" data-md-component=""consent"" id=""__consent"">
+<div class=""md-consent__overlay""></div>
+
+</div>
+
+
+
+
+
+
+</body></html>"
+"https://docs.flare.network/developer-hub/#developer-hub, https://github.com/flare-foundation/docs/edit/main/docs/developer-hub.md, https://dev.flare.network/","<!DOCTYPE html><html class=""js-focus-visible js"" lang=""en"" data-js-focus-visible="""">
+<body data-md-color-accent=""indigo"" data-md-color-primary=""indigo"" data-md-color-scheme=""flaredark"" dir=""ltr"" data-md-color-media=""(prefers-color-scheme: dark)"">
+<input autocomplete=""off"" class=""md-toggle"" data-md-toggle=""drawer"" id=""__drawer"" type=""checkbox"">
+<input autocomplete=""off"" class=""md-toggle"" data-md-toggle=""search"" id=""__search"" type=""checkbox"">
+<label class=""md-overlay"" for=""__drawer""></label>
+<div data-md-component=""skip"">
+<a class=""md-skip"" href=""https://docs.flare.network/developer-hub/#developer-hub"">
+          Skip to content
+        </a>
+</div>
+<div data-md-component=""announce"">
+</div>
+<!-- Google Tag Manager (noscript) -->
+
+<!-- End Google Tag Manager (noscript) -->
+<!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the ""Software""), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED ""AS IS"", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+<!-- Determine classes -->
+<!-- Header -->
+
+<div class=""md-container"" data-md-component=""container"">
+<main class=""md-main"" data-md-component=""main"">
+<div class=""md-main__inner md-grid"">
+<div class=""md-sidebar md-sidebar--primary"" data-md-component=""sidebar"" data-md-type=""navigation"" style=""top: 8087px;"">
+<div class=""md-sidebar__scrollwrap"">
+<div class=""md-sidebar__inner"">
+
+</div>
+</div>
+</div>
+<div class=""md-sidebar md-sidebar--secondary"" data-md-component=""sidebar"" data-md-type=""toc"" style=""top: 8087px;"">
+<div class=""md-sidebar__scrollwrap"">
+<div class=""md-sidebar__inner"">
+
+</div>
+</div>
+</div>
+<div class=""md-content"" data-md-component=""content"">
+<article class=""md-content__inner md-typeset"">
+<a class=""md-content__button md-icon"" href=""https://github.com/flare-foundation/docs/edit/main/docs/developer-hub.md"" title=""Edit this page"" target=""_blank"" rel=""noopener noreferrer"">
+<svg viewBox=""0 0 24 24"" xmlns=""http://www.w3.org/2000/svg""><path d=""M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z""></path></svg>
+</a>
+<h1 id=""developer-hub"">Developer Hub<a class=""headerlink"" href=""https://docs.flare.network/developer-hub/#developer-hub"" title=""Permanent link"">#</a></h1>
+<p>Flare’s developer documentation has been moved to the <a href=""https://dev.flare.network/"" target=""_blank"" rel=""noopener noreferrer"" class=""external-link"">Flare Developer Hub</a>.</p>
+
+</article>
+</div>
+
+
+</div>
+
+</main>
+
+</div>
+<div class=""md-dialog"" data-md-component=""dialog"">
+<div class=""md-dialog__inner md-typeset""></div>
+</div>
+<div class=""md-consent"" data-md-component=""consent"" id=""__consent"">
+<div class=""md-consent__overlay""></div>
+
+</div>
+
+
+
+
+
+
+</body></html>"
+"https://docs.flare.network/tech/flare/#what-is-flare, https://github.com/flare-foundation/docs/edit/main/docs/tech/flare.md, https://docs.flare.network/assets/images/dev/reference/logo-FLR.png, https://docs.flare.network/tech/glossary/#layer1, https://docs.flare.network/tech/glossary/#evm, https://docs.flare.network/tech/glossary/#smart_contract, https://docs.flare.network/tech/validators/, https://docs.flare.network/tech/glossary/#oracle, https://docs.flare.network/tech/ftso/, https://docs.flare.network/tech/data-connector/, https://docs.flare.network/tech/glossary/#native, https://docs.flare.network/tech/glossary/#data_proof, https://docs.flare.network/tech/glossary/#trustless, https://docs.flare.network/tech/glossary/#defi, https://docs.flare.network/tech/glossary/#nft, https://docs.flare.network/tech/glossary/#rwa, https://docs.flare.network/tech/flare/#flare-protocols, https://docs.flare.network/tech/glossary/#price_pair, https://dev.flare.network/fassets/overview, https://docs.flare.network/tech/flare/#developing-on-flare, https://dev.flare.network/, https://docs.flare.network/tech/flare/#flare-networks, https://docs.flare.network/tech/glossary/#main_network, https://docs.flare.network/tech/glossary/#canary_network, https://docs.flare.network/tech/glossary/#coston, https://docs.flare.network/assets/images/tech/flare-network-types.png, https://docs.flare.network/tech/flare/#flare-chains","<!DOCTYPE html><html class=""js-focus-visible js"" lang=""en"" data-js-focus-visible="""">
+<body data-md-color-accent=""indigo"" data-md-color-primary=""indigo"" data-md-color-scheme=""flaredark"" dir=""ltr"" data-md-color-media=""(prefers-color-scheme: dark)"">
+<input autocomplete=""off"" class=""md-toggle"" data-md-toggle=""drawer"" id=""__drawer"" type=""checkbox"">
+<input autocomplete=""off"" class=""md-toggle"" data-md-toggle=""search"" id=""__search"" type=""checkbox"">
+<label class=""md-overlay"" for=""__drawer""></label>
+<div data-md-component=""skip"">
+<a class=""md-skip"" href=""https://docs.flare.network/tech/flare/#what-is-flare"">
+          Skip to content
+        </a>
+</div>
+<div data-md-component=""announce"">
+</div>
+<!-- Google Tag Manager (noscript) -->
+
+<!-- End Google Tag Manager (noscript) -->
+<!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the ""Software""), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED ""AS IS"", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+<!-- Determine classes -->
+<!-- Header -->
+
+<div class=""md-container"" data-md-component=""container"">
+<main class=""md-main"" data-md-component=""main"">
+<div class=""md-main__inner md-grid"">
+<div class=""md-sidebar md-sidebar--primary"" data-md-component=""sidebar"" data-md-type=""navigation"" style=""top: 8087px;"">
+<div class=""md-sidebar__scrollwrap"">
+<div class=""md-sidebar__inner"">
+
+</div>
+</div>
+</div>
+<div class=""md-sidebar md-sidebar--secondary"" data-md-component=""sidebar"" data-md-type=""toc"" style=""top: 8087px;"">
+<div class=""md-sidebar__scrollwrap"">
+<div class=""md-sidebar__inner"">
+
+</div>
+</div>
+</div>
+<div class=""md-content"" data-md-component=""content"">
+<article class=""md-content__inner md-typeset"">
+<a class=""md-content__button md-icon"" href=""https://github.com/flare-foundation/docs/edit/main/docs/tech/flare.md"" title=""Edit this page"" target=""_blank"" rel=""noopener noreferrer"">
+<svg viewBox=""0 0 24 24"" xmlns=""http://www.w3.org/2000/svg""><path d=""M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z""></path></svg>
+</a>
+<h1 id=""what-is-flare"">What Is Flare?<a class=""headerlink"" href=""https://docs.flare.network/tech/flare/#what-is-flare"" title=""Permanent link"">#</a></h1>
+<div class=""admonition image inline end"">
+<p><a target=""_blank"" href=""https://docs.flare.network/assets/images/dev/reference/logo-FLR.png""><img alt=""Flare logo"" class=""allow-zoom"" src=""https://docs.flare.network/assets/images/dev/reference/logo-FLR.png"" title=""Click to enlarge""></a></p>
+</div>
+<p>Flare is the blockchain for data.
+It is a <a href=""https://docs.flare.network/tech/glossary/#layer1"">layer 1</a>, <a href=""https://docs.flare.network/tech/glossary/#evm"">EVM</a> <a href=""https://docs.flare.network/tech/glossary/#smart_contract"">smart contract</a> platform designed to expand the utility of blockchain.</p>
+<p>Flare's aim is to provide data as a public good, meaning that data is not controlled by a centralized entity and is available to all.
+The infrastructure providers, which perform doubly as <a href=""https://docs.flare.network/tech/validators/"">validators</a> and data providers, enable two native <a href=""https://docs.flare.network/tech/glossary/#oracle"">oracles</a>, the <a href=""https://docs.flare.network/tech/ftso/"">FTSO</a> and the <a href=""https://docs.flare.network/tech/data-connector/"">Flare Data Connector</a>.
+This <a href=""https://docs.flare.network/tech/glossary/#native"">native</a> processing provides developers on Flare with efficient access to large amounts of data and <a href=""https://docs.flare.network/tech/glossary/#data_proof"">data proofs</a> at minimal cost, with which to build software on the platform.</p>
+<p>By giving developers <a href=""https://docs.flare.network/tech/glossary/#trustless"">trustless</a> access to the broadest range of data needed by the software they build, Flare can advance the development of more blockchain use cases where data is important, such as in <a href=""https://docs.flare.network/tech/glossary/#defi"">DeFi</a>, gaming, <a href=""https://docs.flare.network/tech/glossary/#nft"">NFT</a>, music, social networks, Real World Assets <a href=""https://docs.flare.network/tech/glossary/#rwa"">(RWAs)</a>, Machine Learning (ML), and Artificial Intelligence (AI).</p>
+<h2 id=""flare-protocols"">Flare Protocols<a class=""headerlink"" href=""https://docs.flare.network/tech/flare/#flare-protocols"" title=""Permanent link"">#</a></h2>
+<p>Flare has the following native data acquisition protocols at these stages of development:</p>
+<ul>
+<li>The <strong><a href=""https://docs.flare.network/tech/ftso/"">Flare Time-Series Oracle (FTSO)</a></strong> provides continuous estimations of changing data, such as <a href=""https://docs.flare.network/tech/glossary/#price_pair"">price pairs</a>.</li>
+<li>The <strong><a href=""https://docs.flare.network/tech/data-connector/"">Flare Data Connector</a></strong> allows querying of verifiable, non-changing data from other chains and the internet.</li>
+<li>The <strong><a href=""https://dev.flare.network/fassets/overview"" target=""_blank"" rel=""noopener noreferrer"" class=""external-link"">FAssets</a></strong> system is being developed by Flare Labs. It allows tokens on blockchains that do not support smart contracts to be used trustlessly with smart contracts on the Flare blockchain.</li>
+</ul>
+<h2 id=""developing-on-flare"">Developing on Flare<a class=""headerlink"" href=""https://docs.flare.network/tech/flare/#developing-on-flare"" title=""Permanent link"">#</a></h2>
+<p>For information about developing on Flare, see the <a href=""https://dev.flare.network/"" target=""_blank"" rel=""noopener noreferrer"" class=""external-link"">Flare Developer Hub</a>.</p>
+<h2 id=""flare-networks"">Flare Networks<a class=""headerlink"" href=""https://docs.flare.network/tech/flare/#flare-networks"" title=""Permanent link"">#</a></h2>
+<p>Flare has 4 networks with different purposes:</p>
+<ul>
+<li><strong>Flare</strong> is the <a href=""https://docs.flare.network/tech/glossary/#main_network"">main network</a>, where <code>$FLR</code> is the native currency.</li>
+<li><strong>Songbird</strong> is the <a href=""https://docs.flare.network/tech/glossary/#canary_network"">canary network</a>, where <code>$SGB</code> is the native currency. Created with users in mind, it is meant for testing features under ""real fire"" conditions, before deploying them on the main network.</li>
+<li><strong>Coston</strong> is Songbird's public <a href=""https://docs.flare.network/tech/glossary/#coston"">test network</a>, created with developers in mind.</li>
+<li><strong>Coston2</strong> is Flare's public <a href=""https://docs.flare.network/tech/glossary/#coston"">test network</a>, created with developers in mind.</li>
+</ul>
+<figure>
+<p><a target=""_blank"" href=""https://docs.flare.network/assets/images/tech/flare-network-types.png""><img alt=""The Flare networks"" class=""allow-zoom"" loading=""lazy"" src=""https://docs.flare.network/assets/images/tech/flare-network-types.png"" width=""500px"" title=""Click to enlarge""></a></p>
+<figcaption>General feature adoption flow.</figcaption>
+</figure>
+<h2 id=""flare-chains"">Flare Chains<a class=""headerlink"" href=""https://docs.flare.network/tech/flare/#flare-chains"" title=""Permanent link"">#</a></h2>
+<p>Flare uses two chains and is developing a built-in interoperability mechanism between them.</p>
+<ul>
+<li><strong>C-Chain:</strong> The contract chain that is used for smart contracts. It is where the Ethereum Virtual Machine operates, and is the chain where the vast bulk of the community currently interact.</li>
+<li><strong>P-Chain:</strong> The platform chain that accommodates <a href=""https://docs.flare.network/tech/validators/"">staking</a> and provides rewards to its validators.</li>
+</ul>
+
+</article>
+</div>
+
+
+</div>
+
+</main>
+
+</div>
+<div class=""md-dialog"" data-md-component=""dialog"">
+<div class=""md-dialog__inner md-typeset""></div>
+</div>
+<div class=""md-consent"" data-md-component=""consent"" id=""__consent"">
+<div class=""md-consent__overlay""></div>
+
+</div>
+
+
+
+
+
+
+</body></html>"
+"https://docs.flare.network/infra/#infrastructure-guides, https://github.com/flare-foundation/docs/edit/main/docs/infra/index.md","<!DOCTYPE html><html class=""js-focus-visible js"" lang=""en"" data-js-focus-visible="""">
+<body data-md-color-accent=""indigo"" data-md-color-primary=""indigo"" data-md-color-scheme=""flaredark"" dir=""ltr"" data-md-color-media=""(prefers-color-scheme: dark)"">
+<input autocomplete=""off"" class=""md-toggle"" data-md-toggle=""drawer"" id=""__drawer"" type=""checkbox"">
+<input autocomplete=""off"" class=""md-toggle"" data-md-toggle=""search"" id=""__search"" type=""checkbox"">
+<label class=""md-overlay"" for=""__drawer""></label>
+<div data-md-component=""skip"">
+<a class=""md-skip"" href=""https://docs.flare.network/infra/#infrastructure-guides"">
+          Skip to content
+        </a>
+</div>
+<div data-md-component=""announce"">
+</div>
+<!-- Google Tag Manager (noscript) -->
+
+<!-- End Google Tag Manager (noscript) -->
+<!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the ""Software""), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED ""AS IS"", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+<!-- Determine classes -->
+<!-- Header -->
+
+<div class=""md-container"" data-md-component=""container"">
+<main class=""md-main"" data-md-component=""main"">
+<div class=""md-main__inner md-grid"">
+<div class=""md-sidebar md-sidebar--primary"" data-md-component=""sidebar"" data-md-type=""navigation"" style=""top: 8087px;"">
+<div class=""md-sidebar__scrollwrap"">
+<div class=""md-sidebar__inner"">
+
+</div>
+</div>
+</div>
+<div class=""md-sidebar md-sidebar--secondary"" data-md-component=""sidebar"" data-md-type=""toc"" style=""top: 8087px;"">
+<div class=""md-sidebar__scrollwrap"">
+<div class=""md-sidebar__inner"">
+
+</div>
+</div>
+</div>
+<div class=""md-content"" data-md-component=""content"">
+<article class=""md-content__inner md-typeset"">
+<a class=""md-content__button md-icon"" href=""https://github.com/flare-foundation/docs/edit/main/docs/infra/index.md"" title=""Edit this page"" target=""_blank"" rel=""noopener noreferrer"">
+<svg viewBox=""0 0 24 24"" xmlns=""http://www.w3.org/2000/svg""><path d=""M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z""></path></svg>
+</a>
+<h1 id=""infrastructure-guides"">Infrastructure Guides<a class=""headerlink"" href=""https://docs.flare.network/infra/#infrastructure-guides"" title=""Permanent link"">#</a></h1>
+<p>This section contains step-by-step guides on how to deploy the different components that make up the Flare ecosystem, and be rewarded for it.</p>
+
+</article>
+</div>
+
+
+</div>
+
+</main>
+
+</div>
+<div class=""md-dialog"" data-md-component=""dialog"">
+<div class=""md-dialog__inner md-typeset""></div>
+</div>
+<div class=""md-consent"" data-md-component=""consent"" id=""__consent"">
+<div class=""md-consent__overlay""></div>
+
+</div>
+
+
+
+
+
+
+</body></html>"
