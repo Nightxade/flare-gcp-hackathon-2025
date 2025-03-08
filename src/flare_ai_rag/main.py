@@ -13,7 +13,7 @@ from fastapi import APIRouter, FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from qdrant_client import QdrantClient
 
-from flare_ai_rag.ai import GeminiEmbedding, GeminiProvider
+from flare_ai_rag.ai import GeminiDenseEmbedding, ModelSparseEmbedding, GeminiProvider
 from flare_ai_rag.api import ChatRouter
 from flare_ai_rag.attestation import Vtpm
 from flare_ai_rag.prompts import PromptService
@@ -52,13 +52,15 @@ def setup_retriever(
     retriever_config = RetrieverConfig.load(input_config["retriever_config"])
 
     # Set up Gemini Embedding client
-    embedding_client = GeminiEmbedding(settings.gemini_api_key)
+    dense_embedding_client = GeminiDenseEmbedding(settings.gemini_api_key)
+    sparse_embedding_client = ModelSparseEmbedding(retriever_config.sparse_embedding_model)
     # (Re)generate qdrant collection
     generate_collection(
         df_docs,
         qdrant_client,
         retriever_config,
-        embedding_client=embedding_client,
+        dense_embedding_client=dense_embedding_client,
+        sparse_embedding_client=sparse_embedding_client,
     )
     logger.info(
         "The Qdrant collection has been generated.",
@@ -68,7 +70,8 @@ def setup_retriever(
     return QdrantRetriever(
         client=qdrant_client,
         retriever_config=retriever_config,
-        embedding_client=embedding_client,
+        dense_embedding_client=dense_embedding_client,
+        sparse_embedding_client=sparse_embedding_client,
     )
 
 

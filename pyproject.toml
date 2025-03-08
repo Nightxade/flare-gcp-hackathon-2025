@@ -7,6 +7,7 @@ requires-python = ">=3.12"
 dependencies = [
     "cryptography>=44.0.1",
     "fastapi>=0.115.8",
+    "fastembed>=0.6.0",
     "firecrawl-py>=1.13.5",
     "google-generativeai>=0.8.4",
     "httpx>=0.28.1",

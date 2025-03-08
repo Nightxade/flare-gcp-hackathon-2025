@@ -164,10 +164,11 @@ class ChatRouter:
             prompt=prompt, response_mime_type=mime_type, response_schema=schema
         )
         self.logger.info("Query classified", classification=classification)
+        classification = "ANSWER" # ---- TODO ---- #
 
         if classification == "ANSWER":
             # Step 2. Retrieve relevant documents.
-            retrieved_docs = self.retriever.semantic_search(_, top_k=5)
+            retrieved_docs = self.retriever.hybrid_search(_)
             self.logger.info("Documents retrieved")
 
             # Step 3. Generate the final answer.

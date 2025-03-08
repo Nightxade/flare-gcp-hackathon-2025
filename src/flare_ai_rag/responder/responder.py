@@ -31,7 +31,7 @@ class GeminiResponder(BaseResponder):
 
         # Build context from the retrieved documents.
         for idx, doc in enumerate(retrieved_documents, start=1):
-            identifier = doc.get("metadata", {}).get("filename", f"Doc{idx}")
+            identifier = doc.get("filename", f"Doc{idx}")
             context += f"Document {identifier}:\n{doc.get('text', '')}\n\n"
 
         # Compose the prompt

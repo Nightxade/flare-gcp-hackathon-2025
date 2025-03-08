@@ -2,10 +2,11 @@ import google.api_core.exceptions
 import pandas as pd
 import structlog
 from qdrant_client import QdrantClient
-from qdrant_client.http.models import Distance, PointStruct, VectorParams
+from qdrant_client.models import SparseVector, PointStruct, Distance, VectorParams, SparseVectorParams, Modifier
 
-from flare_ai_rag.ai import EmbeddingTaskType, GeminiEmbedding
+from flare_ai_rag.ai import EmbeddingTaskType, GeminiDenseEmbedding, ModelSparseEmbedding
 from flare_ai_rag.retriever.config import RetrieverConfig
+from flare_ai_rag.settings import settings
 
 logger = structlog.get_logger(__name__)
 
@@ -20,7 +21,18 @@ def _create_collection(
     """
     client.recreate_collection(
         collection_name=collection_name,
-        vectors_config=VectorParams(size=vector_size, distance=Distance.COSINE),
+        vectors_config={
+            "dense": VectorParams(
+                size=vector_size,
+                distance=Distance.COSINE
+            ),
+        },
+        sparse_vectors_config={
+            "sparse": SparseVectorParams(
+                modifier=Modifier.IDF
+            ),
+        },
+        # vectors_config=VectorParams(size=vector_size, distance=Distance.COSINE),
     )
 
 
@@ -28,7 +40,8 @@ def generate_collection(
     df_docs: pd.DataFrame,
     qdrant_client: QdrantClient,
     retriever_config: RetrieverConfig,
-    embedding_client: GeminiEmbedding,
+    dense_embedding_client: GeminiDenseEmbedding,
+    sparse_embedding_client: ModelSparseEmbedding,
 ) -> None:
     """Routine for generating a Qdrant collection for a specific CSV file type."""
     _create_collection(
@@ -38,22 +51,25 @@ def generate_collection(
         "Created the collection.", collection_name=retriever_config.collection_name
     )
 
+    # Process Embeddings
     points = []
     for idx, (_, row) in enumerate(
         df_docs.iterrows(), start=1
     ):  # Using _ for unused variable
         content = row["Contents"]
 
+        # check validity
         if not isinstance(content, str):
             logger.warning(
                 "Skipping document due to missing or invalid content.",
                 filename=row["Filename"],
             )
             continue
-
+        
+        # Gemini Dense Embedding
         try:
-            embedding = embedding_client.embed_content(
-                embedding_model=retriever_config.embedding_model,
+            dense_embedding = dense_embedding_client.embed_content(
+                embedding_model=retriever_config.dense_embedding_model,
                 task_type=EmbeddingTaskType.RETRIEVAL_DOCUMENT,
                 contents=content,
                 title=str(row["Filename"]),
@@ -81,15 +97,27 @@ def generate_collection(
             )
             continue
 
+        # Sparse Embeeding
+        sparse_embedding = sparse_embedding_client.embed_content(
+            contents=content
+        )
+
+        # inserting point
+        sparse_vector = SparseVector(
+            indices=sparse_embedding.indices.tolist(), values=sparse_embedding.values.tolist()
+        )
         payload = {
             "filename": row["Filename"],
             "metadata": row["Metadata"],
             "text": content,
         }
-
+        vector = {
+            "dense": dense_embedding,
+            "sparse": sparse_vector,
+        }
         point = PointStruct(
             id=idx,  # Using integer ID starting from 1
-            vector=embedding,
+            vector=vector, # type: ignore # ---- NOTE: maybe not a fix ---- #
             payload=payload,
         )
         points.append(point)

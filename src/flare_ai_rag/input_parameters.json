@@ -1,15 +1,16 @@
 {
     "router_model": {
-        "id": "gemini-1.5-flash"
+        "id": "gemini-2.0-flash"
     },
     "retriever_config": {
-        "embedding_model": "models/text-embedding-004",
+        "dense_embedding_model": "models/text-embedding-004",
+        "sparse_embedding_model": "Qdrant/bm42-all-minilm-l6-v2-attentions",
         "vector_size": 768,
         "collection_name": "docs_collection",
         "host": "localhost",
         "port": 6333
     },
     "responder_model": {
-        "id": "gemini-1.5-flash"
+        "id": "gemini-2.0-flash"
     }
 }

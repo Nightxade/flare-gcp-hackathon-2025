@@ -19,6 +19,8 @@ from google.generativeai.embedding import (
 from google.generativeai.generative_models import ChatSession, GenerativeModel
 from google.generativeai.types import GenerationConfig
 
+from fastembed import SparseEmbedding, SparseTextEmbedding
+
 from flare_ai_rag.ai.base import BaseAIProvider, ModelResponse
 
 logger = structlog.get_logger(__name__)
@@ -183,7 +185,7 @@ class GeminiProvider(BaseAIProvider):
         )
 
 
-class GeminiEmbedding:
+class GeminiDenseEmbedding:
     def __init__(self, api_key: str) -> None:
         """
         Initialize Gemini with API credentials.
@@ -220,3 +222,25 @@ class GeminiEmbedding:
             msg = "Failed to extract embedding from response."
             raise ValueError(msg) from e
         return embedding
+    
+class ModelSparseEmbedding:
+
+    def __init__(self, embedding_model: str) -> None:
+        self.model = SparseTextEmbedding(model_name=embedding_model)
+
+    def embed_content(
+        self,
+        contents: str,
+    ) -> SparseEmbedding:
+        """
+        Generate sparse text embeddings
+
+        Args:
+            model (str): The embedding model to use (e.g., "Qdrant/bm42-all-minilm-l6-v2-attentions").
+            contents (str): The text to be embedded.
+
+        Returns:
+            list[float]: The generated embedding vector.
+        """
+        embeddings = list(self.model.passage_embed([contents]))
+        return embeddings[0]
