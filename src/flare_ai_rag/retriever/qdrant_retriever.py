@@ -3,9 +3,14 @@ from typing import override
 from qdrant_client import QdrantClient
 from qdrant_client.models import SparseVector, FusionQuery, Fusion, Prefetch
 
-from flare_ai_rag.ai import EmbeddingTaskType, GeminiDenseEmbedding, ModelSparseEmbedding
+from flare_ai_rag.ai import (
+    EmbeddingTaskType,
+    GeminiDenseEmbedding,
+    ModelSparseEmbedding,
+)
 from flare_ai_rag.retriever.base import BaseRetriever
 from flare_ai_rag.retriever.config import RetrieverConfig
+
 
 class QdrantRetriever(BaseRetriever):
     def __init__(
@@ -39,9 +44,11 @@ class QdrantRetriever(BaseRetriever):
         )
 
         return query_vector
-    
+
     @override
-    def keyword_search(self, query: str, top_k: int = 25) -> tuple[list[int], list[float]]:
+    def keyword_search(
+        self, query: str, top_k: int = 25
+    ) -> tuple[list[int], list[float]]:
         """
         Perform keyword search by converting the query into a sparse vector
         and searching in Qdrant.
@@ -79,13 +86,9 @@ class QdrantRetriever(BaseRetriever):
             Prefetch(
                 query=semantic_vector,
                 using="dense",
-                limit=top_k//2,
+                limit=top_k // 2,
             ),
-            Prefetch(
-                query=keyword_vector,
-                using="sparse",
-                limit=top_k//2
-            ),
+            Prefetch(query=keyword_vector, using="sparse", limit=top_k // 2),
         ]
 
         results = self.client.query_points(
@@ -95,9 +98,11 @@ class QdrantRetriever(BaseRetriever):
                 fusion=Fusion.RRF,
             ),
             with_payload=True,
-            limit=top_k//2,
+            limit=top_k // 2,
         )
 
-        results = list(map(lambda point: point.model_dump()['payload'], results.points))[:limit]
+        results = list(
+            map(lambda point: point.model_dump()["payload"], results.points)
+        )[:limit]
         print(results)
         return results

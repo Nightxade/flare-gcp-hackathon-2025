@@ -53,7 +53,9 @@ def setup_retriever(
 
     # Set up Gemini Embedding client
     dense_embedding_client = GeminiDenseEmbedding(settings.gemini_api_key)
-    sparse_embedding_client = ModelSparseEmbedding(retriever_config.sparse_embedding_model)
+    sparse_embedding_client = ModelSparseEmbedding(
+        retriever_config.sparse_embedding_model
+    )
     # (Re)generate qdrant collection
     generate_collection(
         df_docs,

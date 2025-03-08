@@ -1,5 +1,10 @@
 from .base import AsyncBaseClient, BaseClient
-from .gemini import EmbeddingTaskType, GeminiDenseEmbedding, ModelSparseEmbedding, GeminiProvider
+from .gemini import (
+    EmbeddingTaskType,
+    GeminiDenseEmbedding,
+    ModelSparseEmbedding,
+    GeminiProvider,
+)
 from .model import Model
 from .openrouter import OpenRouterClient
 

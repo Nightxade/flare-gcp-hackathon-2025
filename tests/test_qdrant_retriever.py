@@ -19,14 +19,16 @@ def main() -> None:
 
     # Initialize Gemini client
     dense_embedding_client = GeminiDenseEmbedding(api_key=settings.gemini_api_key)
-    sparse_embedding_client = ModelSparseEmbedding(retriever_config.sparse_embedding_model)
+    sparse_embedding_client = ModelSparseEmbedding(
+        retriever_config.sparse_embedding_model
+    )
 
     # Initialize the retriever.
     retriever = QdrantRetriever(
         client=client,
         retriever_config=retriever_config,
         dense_embedding_client=dense_embedding_client,
-        sparse_embedding_client=sparse_embedding_client
+        sparse_embedding_client=sparse_embedding_client,
     )
 
     # Define a sample query.

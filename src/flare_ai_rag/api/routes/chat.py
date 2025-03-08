@@ -164,7 +164,7 @@ class ChatRouter:
             prompt=prompt, response_mime_type=mime_type, response_schema=schema
         )
         self.logger.info("Query classified", classification=classification)
-        classification = "ANSWER" # ---- TODO ---- #
+        classification = "ANSWER"  # ---- TODO ---- #
 
         if classification == "ANSWER":
             # Step 2. Retrieve relevant documents.

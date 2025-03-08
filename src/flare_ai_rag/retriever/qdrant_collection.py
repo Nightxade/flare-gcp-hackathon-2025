@@ -2,9 +2,20 @@ import google.api_core.exceptions
 import pandas as pd
 import structlog
 from qdrant_client import QdrantClient
-from qdrant_client.models import SparseVector, PointStruct, Distance, VectorParams, SparseVectorParams, Modifier
+from qdrant_client.models import (
+    SparseVector,
+    PointStruct,
+    Distance,
+    VectorParams,
+    SparseVectorParams,
+    Modifier,
+)
 
-from flare_ai_rag.ai import EmbeddingTaskType, GeminiDenseEmbedding, ModelSparseEmbedding
+from flare_ai_rag.ai import (
+    EmbeddingTaskType,
+    GeminiDenseEmbedding,
+    ModelSparseEmbedding,
+)
 from flare_ai_rag.retriever.config import RetrieverConfig
 from flare_ai_rag.settings import settings
 
@@ -22,15 +33,10 @@ def _create_collection(
     client.recreate_collection(
         collection_name=collection_name,
         vectors_config={
-            "dense": VectorParams(
-                size=vector_size,
-                distance=Distance.COSINE
-            ),
+            "dense": VectorParams(size=vector_size, distance=Distance.COSINE),
         },
         sparse_vectors_config={
-            "sparse": SparseVectorParams(
-                modifier=Modifier.IDF
-            ),
+            "sparse": SparseVectorParams(modifier=Modifier.IDF),
         },
         # vectors_config=VectorParams(size=vector_size, distance=Distance.COSINE),
     )
@@ -65,7 +71,7 @@ def generate_collection(
                 filename=row["Filename"],
             )
             continue
-        
+
         # Gemini Dense Embedding
         try:
             dense_embedding = dense_embedding_client.embed_content(
@@ -98,13 +104,12 @@ def generate_collection(
             continue
 
         # Sparse Embeeding
-        sparse_embedding = sparse_embedding_client.embed_content(
-            contents=content
-        )
+        sparse_embedding = sparse_embedding_client.embed_content(contents=content)
 
         # inserting point
         sparse_vector = SparseVector(
-            indices=sparse_embedding.indices.tolist(), values=sparse_embedding.values.tolist()
+            indices=sparse_embedding.indices.tolist(),
+            values=sparse_embedding.values.tolist(),
         )
         payload = {
             "filename": row["Filename"],
@@ -117,7 +122,7 @@ def generate_collection(
         }
         point = PointStruct(
             id=idx,  # Using integer ID starting from 1
-            vector=vector, # type: ignore # ---- NOTE: maybe not a fix ---- #
+            vector=vector,  # type: ignore # ---- NOTE: maybe not a fix ---- #
             payload=payload,
         )
         points.append(point)

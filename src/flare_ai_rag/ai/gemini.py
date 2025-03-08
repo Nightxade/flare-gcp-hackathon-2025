@@ -222,9 +222,9 @@ class GeminiDenseEmbedding:
             msg = "Failed to extract embedding from response."
             raise ValueError(msg) from e
         return embedding
-    
-class ModelSparseEmbedding:
 
+
+class ModelSparseEmbedding:
     def __init__(self, embedding_model: str) -> None:
         self.model = SparseTextEmbedding(model_name=embedding_model)
 
