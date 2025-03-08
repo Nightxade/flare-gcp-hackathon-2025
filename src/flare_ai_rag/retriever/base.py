@@ -3,12 +3,12 @@ from abc import ABC, abstractmethod
 
 class BaseRetriever(ABC):
     @abstractmethod
-    def semantic_search(self, query: str, top_k: int = 5) -> list[float]:
+    def semantic_search(self, query: str) -> list[float]:
         """Perform semantic search using vector embeddings."""
 
     @abstractmethod
     def keyword_search(
-        self, query: str, top_k: int = 5
+        self, query: str
     ) -> tuple[list[int], list[float]]:
         """Perform keyword search using vector embeddings."""
 

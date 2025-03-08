@@ -48,22 +48,23 @@ Input: ${user_input}
 
 Response format:
 {
-  "classification": "<UPPERCASE_CATEGORY>"
+  "classification": "<UPPERCASE_CATEGORY>",
+  "reason": "<REASON FOR CLASSIFICATION>"
 }
 
 Processing rules:
 - The response should be exactly one of the three categories
 - DO NOT infer missing values
 - Normalize response to uppercase
+- The reason should explain why the classification was chosen if and only if the classification is "CLARIFY"
 
 Examples:
-- "What is Flare's block time?" → {"category": "ANSWER"}
-- "How do you stake on Flare?" → {"category": "ANSWER"}
-- "How is the weather today?" → {"category": "REJECT"}
-- "What is the average block time?" - No specific chain is mentioned.
-   → {"category": "CLARIFY"}
-- "How secure is it?" → {"category": "CLARIFY"}
-- "Tell me about Flare." → {"category": "CLARIFY"}
+- "What is Flare's block time?" → {"classification": "ANSWER"}
+- "How do you stake on Flare?" → {"classification": "ANSWER"}
+- "How is the weather today?" → {"classification": "REJECT"}
+- "What is the average block time?" → {"classification": "CLARIFY", "reason": "No specific chain is mentioned."}
+- "How secure is it?" → {"classification": "CLARIFY", "reason": "What does \"it\" refer to?"}
+- "Tell me about Flare." → {"classification": "CLARIFY", "reason": "The query is too vague."}
 """
 
 RAG_RESPONDER: Final = """

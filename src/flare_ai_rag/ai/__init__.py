@@ -3,6 +3,7 @@ from .gemini import (
     EmbeddingTaskType,
     GeminiDenseEmbedding,
     GeminiProvider,
+    ModelLateEmbedding,
     ModelSparseEmbedding,
 )
 from .model import Model
@@ -15,6 +16,7 @@ __all__ = [
     "GeminiDenseEmbedding",
     "GeminiProvider",
     "Model",
+    "ModelLateEmbedding",
     "ModelSparseEmbedding",
     "OpenRouterClient",
 ]
