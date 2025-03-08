@@ -3,7 +3,8 @@ import { Send } from 'lucide-react';
 import ReactMarkdown from 'react-markdown';
 import './index.css';
 
-const BACKEND_ROUTE = "api/routes/chat/";
+const BACKEND_ROUTE = "http://localhost:8080/api/routes/chat/";
+// never commit this file 
 
 const ChatInterface = () => {
   const [messages, setMessages] = useState([
