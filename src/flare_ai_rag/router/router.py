@@ -57,6 +57,7 @@ class GeminiRouter(BaseQueryRouter):
         }
         if classification not in valid_options:
             classification = self.router_config.clarify_option
+            logger.debug("\nNo classificaion found\n")
 
         return classification
 
