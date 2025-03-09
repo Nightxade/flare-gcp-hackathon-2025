@@ -1,5 +1,5 @@
-Links,HTML Content
-"https://docs.flare.network/#welcome-to-the-flare-network-documentation, https://github.com/flare-foundation/docs/edit/main/docs/index.md, https://docs.flare.network/tech/flare/, https://docs.flare.network/#for-token-holders, https://docs.flare.network/#user-guides, https://docs.flare.network/user/wallets/how-to-access-flare-network-with-metamask/, https://docs.flare.network/tech/the-flaredrop/, https://docs.flare.network/user/staking/staking-flarestake/, https://docs.flare.network/#for-developers, https://docs.flare.network/#developer-guides, https://dev.flare.network/, https://docs.flare.network/#for-everyone, https://docs.flare.network/#flare-products, https://dev.flare.network/ftso/overview, https://docs.flare.network/tech/data-connector/, https://dev.flare.network/fassets/overview, https://docs.flare.network/#flare-concepts, https://docs.flare.network/user/governance/, https://docs.flare.network/user/claiming-the-flaredrop/, https://docs.flare.network/user/personal-delegation-account/","<!DOCTYPE html><html class=""js-focus-visible js"" lang=""en"" data-js-focus-visible="""">
+HTML Content
+"<!DOCTYPE html><html class=""js-focus-visible js"" lang=""en"" data-js-focus-visible="""">
 <body data-md-color-accent=""indigo"" data-md-color-primary=""indigo"" data-md-color-scheme=""flaredark"" dir=""ltr"" data-md-color-media=""(prefers-color-scheme: dark)"">
 <input autocomplete=""off"" class=""md-toggle"" data-md-toggle=""drawer"" id=""__drawer"" type=""checkbox"">
 <input autocomplete=""off"" class=""md-toggle"" data-md-toggle=""search"" id=""__search"" type=""checkbox"">
@@ -134,13 +134,13 @@ Use the contact buttons at the bottom of the page if there is anything you canno
 
 
 </body></html>"
-"https://docs.flare.network/developer-hub/#developer-hub, https://github.com/flare-foundation/docs/edit/main/docs/developer-hub.md, https://dev.flare.network/","<!DOCTYPE html><html class=""js-focus-visible js"" lang=""en"" data-js-focus-visible="""">
+"<!DOCTYPE html><html class=""js-focus-visible js"" lang=""en"" data-js-focus-visible="""">
 <body data-md-color-accent=""indigo"" data-md-color-primary=""indigo"" data-md-color-scheme=""flaredark"" dir=""ltr"" data-md-color-media=""(prefers-color-scheme: dark)"">
 <input autocomplete=""off"" class=""md-toggle"" data-md-toggle=""drawer"" id=""__drawer"" type=""checkbox"">
 <input autocomplete=""off"" class=""md-toggle"" data-md-toggle=""search"" id=""__search"" type=""checkbox"">
 <label class=""md-overlay"" for=""__drawer""></label>
 <div data-md-component=""skip"">
-<a class=""md-skip"" href=""https://docs.flare.network/developer-hub/#developer-hub"">
+<a class=""md-skip"" href=""https://docs.flare.network/infra/#infrastructure-guides"">
           Skip to content
         </a>
 </div>
@@ -192,11 +192,11 @@ Use the contact buttons at the bottom of the page if there is anything you canno
 </div>
 <div class=""md-content"" data-md-component=""content"">
 <article class=""md-content__inner md-typeset"">
-<a class=""md-content__button md-icon"" href=""https://github.com/flare-foundation/docs/edit/main/docs/developer-hub.md"" title=""Edit this page"" target=""_blank"" rel=""noopener noreferrer"">
+<a class=""md-content__button md-icon"" href=""https://github.com/flare-foundation/docs/edit/main/docs/infra/index.md"" title=""Edit this page"" target=""_blank"" rel=""noopener noreferrer"">
 <svg viewBox=""0 0 24 24"" xmlns=""http://www.w3.org/2000/svg""><path d=""M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z""></path></svg>
 </a>
-<h1 id=""developer-hub"">Developer Hub<a class=""headerlink"" href=""https://docs.flare.network/developer-hub/#developer-hub"" title=""Permanent link"">#</a></h1>
-<p>Flare’s developer documentation has been moved to the <a href=""https://dev.flare.network/"" target=""_blank"" rel=""noopener noreferrer"" class=""external-link"">Flare Developer Hub</a>.</p>
+<h1 id=""infrastructure-guides"">Infrastructure Guides<a class=""headerlink"" href=""https://docs.flare.network/infra/#infrastructure-guides"" title=""Permanent link"">#</a></h1>
+<p>This section contains step-by-step guides on how to deploy the different components that make up the Flare ecosystem, and be rewarded for it.</p>
 
 </article>
 </div>
@@ -221,7 +221,7 @@ Use the contact buttons at the bottom of the page if there is anything you canno
 
 
 </body></html>"
-"https://docs.flare.network/tech/flare/#what-is-flare, https://github.com/flare-foundation/docs/edit/main/docs/tech/flare.md, https://docs.flare.network/assets/images/dev/reference/logo-FLR.png, https://docs.flare.network/tech/glossary/#layer1, https://docs.flare.network/tech/glossary/#evm, https://docs.flare.network/tech/glossary/#smart_contract, https://docs.flare.network/tech/validators/, https://docs.flare.network/tech/glossary/#oracle, https://docs.flare.network/tech/ftso/, https://docs.flare.network/tech/data-connector/, https://docs.flare.network/tech/glossary/#native, https://docs.flare.network/tech/glossary/#data_proof, https://docs.flare.network/tech/glossary/#trustless, https://docs.flare.network/tech/glossary/#defi, https://docs.flare.network/tech/glossary/#nft, https://docs.flare.network/tech/glossary/#rwa, https://docs.flare.network/tech/flare/#flare-protocols, https://docs.flare.network/tech/glossary/#price_pair, https://dev.flare.network/fassets/overview, https://docs.flare.network/tech/flare/#developing-on-flare, https://dev.flare.network/, https://docs.flare.network/tech/flare/#flare-networks, https://docs.flare.network/tech/glossary/#main_network, https://docs.flare.network/tech/glossary/#canary_network, https://docs.flare.network/tech/glossary/#coston, https://docs.flare.network/assets/images/tech/flare-network-types.png, https://docs.flare.network/tech/flare/#flare-chains","<!DOCTYPE html><html class=""js-focus-visible js"" lang=""en"" data-js-focus-visible="""">
+"<!DOCTYPE html><html class=""js-focus-visible js"" lang=""en"" data-js-focus-visible="""">
 <body data-md-color-accent=""indigo"" data-md-color-primary=""indigo"" data-md-color-scheme=""flaredark"" dir=""ltr"" data-md-color-media=""(prefers-color-scheme: dark)"">
 <input autocomplete=""off"" class=""md-toggle"" data-md-toggle=""drawer"" id=""__drawer"" type=""checkbox"">
 <input autocomplete=""off"" class=""md-toggle"" data-md-toggle=""search"" id=""__search"" type=""checkbox"">
@@ -343,13 +343,13 @@ This <a href=""https://docs.flare.network/tech/glossary/#native"">native</a> pro
 
 
 </body></html>"
-"https://docs.flare.network/infra/#infrastructure-guides, https://github.com/flare-foundation/docs/edit/main/docs/infra/index.md","<!DOCTYPE html><html class=""js-focus-visible js"" lang=""en"" data-js-focus-visible="""">
+"<!DOCTYPE html><html class=""js-focus-visible js"" lang=""en"" data-js-focus-visible="""">
 <body data-md-color-accent=""indigo"" data-md-color-primary=""indigo"" data-md-color-scheme=""flaredark"" dir=""ltr"" data-md-color-media=""(prefers-color-scheme: dark)"">
 <input autocomplete=""off"" class=""md-toggle"" data-md-toggle=""drawer"" id=""__drawer"" type=""checkbox"">
 <input autocomplete=""off"" class=""md-toggle"" data-md-toggle=""search"" id=""__search"" type=""checkbox"">
 <label class=""md-overlay"" for=""__drawer""></label>
 <div data-md-component=""skip"">
-<a class=""md-skip"" href=""https://docs.flare.network/infra/#infrastructure-guides"">
+<a class=""md-skip"" href=""https://docs.flare.network/developer-hub/#developer-hub"">
           Skip to content
         </a>
 </div>
@@ -401,11 +401,11 @@ This <a href=""https://docs.flare.network/tech/glossary/#native"">native</a> pro
 </div>
 <div class=""md-content"" data-md-component=""content"">
 <article class=""md-content__inner md-typeset"">
-<a class=""md-content__button md-icon"" href=""https://github.com/flare-foundation/docs/edit/main/docs/infra/index.md"" title=""Edit this page"" target=""_blank"" rel=""noopener noreferrer"">
+<a class=""md-content__button md-icon"" href=""https://github.com/flare-foundation/docs/edit/main/docs/developer-hub.md"" title=""Edit this page"" target=""_blank"" rel=""noopener noreferrer"">
 <svg viewBox=""0 0 24 24"" xmlns=""http://www.w3.org/2000/svg""><path d=""M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z""></path></svg>
 </a>
-<h1 id=""infrastructure-guides"">Infrastructure Guides<a class=""headerlink"" href=""https://docs.flare.network/infra/#infrastructure-guides"" title=""Permanent link"">#</a></h1>
-<p>This section contains step-by-step guides on how to deploy the different components that make up the Flare ecosystem, and be rewarded for it.</p>
+<h1 id=""developer-hub"">Developer Hub<a class=""headerlink"" href=""https://docs.flare.network/developer-hub/#developer-hub"" title=""Permanent link"">#</a></h1>
+<p>Flare’s developer documentation has been moved to the <a href=""https://dev.flare.network/"" target=""_blank"" rel=""noopener noreferrer"" class=""external-link"">Flare Developer Hub</a>.</p>
 
 </article>
 </div>
