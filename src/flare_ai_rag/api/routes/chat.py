@@ -9,7 +9,7 @@ from flare_ai_rag.responder import GeminiResponder
 from flare_ai_rag.retriever import QdrantRetriever
 from flare_ai_rag.router import BaseQueryRouter
 
-from src.flare_ai_rag.api.middleware import scrape
+from flare_ai_rag.api.middleware import scrape
 
 logger = structlog.get_logger(__name__)
 router = APIRouter()
