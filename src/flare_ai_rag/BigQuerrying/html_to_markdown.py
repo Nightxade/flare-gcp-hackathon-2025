@@ -13,7 +13,7 @@ converter.ignore_emphasis = True
 def convert_html(html_content):
     return converter.handle(html_content)
 
-# Apply conversion to the correct column
+
 markdown_articles = df["HTML Content"].apply(convert_html)
 
 
