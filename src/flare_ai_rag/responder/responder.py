@@ -29,16 +29,7 @@ class GeminiResponder(BaseResponder):
         """
 
         # Build Context from response history
-        history_context = """
-        List of previous 5 or less responses.
-        Response 1 is the most recent response, and its tokens should be weighted more heavily.
-        As the index of the response increases, its recency decreases, and the weight on its tokens should similarly decrease.
-        Here is the list:
-        """
-
-        for idx, chat in enumerate(self.client.chat_history, start=1):
-            history_context += f"Response {idx}:\n{chat}\n\n"
-
+        history_context = self.client.history_context()
 
         # Build context from the retrieved documents.
         doc_context = "List of retrieved documents:\n"
@@ -54,8 +45,6 @@ class GeminiResponder(BaseResponder):
             + f"User query: {query}\n"
             + self.responder_config.query_prompt
         )
-
-        print(f'\n{prompt}\n')
 
         # Use the generate method of GeminiProvider to obtain a response.
         response = self.client.generate(
