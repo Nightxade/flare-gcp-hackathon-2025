@@ -8,8 +8,8 @@ from flare_ai_rag.ai.gemini import GeminiGeneric
 from flare_ai_rag.settings import settings
 from flare_ai_rag.utils import load_json
 
-IN_PATH = "data/docs.csv"
-OUT_PATH = "data/ndocs.csv"
+IN_PATH = "data/mdocs.csv"
+OUT_PATH = "data/mddocs.csv"
 LIMIT = 9000
 PROMPT=f"""
 Please split the following file into $NUM or more different sections.
@@ -72,7 +72,7 @@ def task(row: pd.Series) -> list[Any]:
 
     return []
 
-with concurrent.futures.ThreadPoolExecutor(max_workers=8) as executor:
+with concurrent.futures.ProcessPoolExecutor(max_workers=64) as executor:
     futures = [executor.submit(task, i[1]) for i in df.iterrows()]
 
 ndf = [f.result() for f in futures if f.result()]
