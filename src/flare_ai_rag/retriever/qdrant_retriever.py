@@ -46,9 +46,7 @@ class QdrantRetriever(BaseRetriever):
         return query_vector
 
     @override
-    def keyword_search(
-        self, query: str
-    ) -> tuple[list[int], list[float]]:
+    def keyword_search(self, query: str) -> tuple[list[int], list[float]]:
         """
         Perform keyword search by converting the query into a sparse vector
         and searching in Qdrant.
