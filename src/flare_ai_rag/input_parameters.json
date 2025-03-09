@@ -12,6 +12,7 @@
         "port": 6333
     },
     "responder_model": {
-        "id": "gemini-2.0-flash"
+        "id": "gemini-2.0-flash",
+        "context_size": 5
     }
 }
