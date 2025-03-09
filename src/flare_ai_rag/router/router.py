@@ -121,3 +121,40 @@ class QueryRouter(BaseQueryRouter):
             classification = self.router_config.clarify_option
 
         return classification
+
+class QueryImprovementRouter(BaseQueryRouter):
+    """
+    A simple router that uses GCloud's Gemini to improve user query quality.
+    """
+
+    def __init__(self, client: GeminiProvider, config: RouterConfig) -> None:
+        """
+        Initialize the router with an API key and model name.
+        :param api_key: Your OpenRouter API key.
+        :param model: The model to use.
+        """
+        self.router_config = config
+        self.client = client
+        self.query = ""
+
+    @override
+    def route_query(
+        self,
+        prompt: str,
+        response_mime_type: str | None = None,
+        response_schema: Any | None = None,
+    ) -> str:
+        """
+        Analyze the query using the configured prompt and classify it.
+        """
+        logger.debug("Sending prompt...", prompt=prompt)
+
+        # Use the generate method of GeminiProvider to obtain a response.
+        response = self.client.generate(
+            prompt=prompt,
+            response_mime_type=response_mime_type,
+            response_schema=response_schema,
+        )
+
+        print(prompt)
+        return response.text

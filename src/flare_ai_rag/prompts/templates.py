@@ -130,3 +130,18 @@ clear to the user:
    - They should confirm the TEE signature is valid
    - They should check that all claims in the attestation response are present and valid
 """
+
+QUERY_IMPROVEMENT: Final = """
+The user provided the following query regarding the Flare blockchain technology:
+
+"${user_input}"
+
+Follow these rules:
+- Please rewrite and expand this query to improve retrieval quality of a vector embedding.
+- Please make sure to add new, relevant keywords.
+- Limit your improved query to less than 200 characters.
+- Do not distort the query's original meaning too much.
+
+MAKE SURE YOU ONLY INCLUDE THE IMPROVED QUERY IN THE FINAL RESPONSE.
+DO NOT INCLUDE ANY EXTRA INFORMATION OR YOUR OWN THOUGHTS.
+"""

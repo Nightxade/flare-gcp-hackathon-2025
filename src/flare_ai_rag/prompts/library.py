@@ -20,6 +20,7 @@ from flare_ai_rag.prompts.schemas import (
 )
 from flare_ai_rag.prompts.templates import (
     CONVERSATIONAL,
+    QUERY_IMPROVEMENT,
     RAG_RESPONDER,
     RAG_ROUTER,
     REMOTE_ATTESTATION,
@@ -110,6 +111,15 @@ class PromptLibrary:
                 description="User has requested a remote attestation",
                 template=REMOTE_ATTESTATION,
                 required_inputs=None,
+                response_schema=None,
+                response_mime_type=None,
+                category="conversational",
+            ),
+            Prompt(
+                name="query_improvement",
+                description="Server requests an improvement to the user's query",
+                template=QUERY_IMPROVEMENT,
+                required_inputs=["user_input"],
                 response_schema=None,
                 response_mime_type=None,
                 category="conversational",
