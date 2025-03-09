@@ -31,8 +31,9 @@ $MARKDOWN
 
 input_config = load_json(settings.input_path / "input_parameters.json")
 model = GeminiGeneric(settings.gemini_api_key, input_config["router_model"]["id"])
+assert settings.gemini_api_key != ""
 
-df = pd.read_csv(IN_PATH)[:100]
+df = pd.read_csv(IN_PATH)
 ndf = []
 print(len(df))
 
@@ -64,7 +65,7 @@ def task(row: pd.Series) -> list[Any]:
 
     return []
 
-with concurrent.futures.ProcessPoolExecutor(max_workers=256) as executor:
+with concurrent.futures.ProcessPoolExecutor(max_workers=64) as executor:
     futures = [executor.submit(task, i[1]) for i in df.iterrows()]
 
 ndf = [f.result() for f in futures if f.result()]
