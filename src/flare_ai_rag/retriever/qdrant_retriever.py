@@ -63,7 +63,7 @@ class QdrantRetriever(BaseRetriever):
         return query_vector.indices.tolist(), query_vector.values.tolist()
 
     @override
-    def hybrid_search(self, query: str, top_k: int = 25, limit: int = 5) -> list[dict]:
+    def hybrid_search(self, query: str, top_k: int = 100, limit: int = 25) -> list[dict]:
         """
         Perform hybrid search by combining dense and sparse embeddings with RRF.
 
@@ -96,7 +96,7 @@ class QdrantRetriever(BaseRetriever):
                 fusion=Fusion.RRF,
             ),
             with_payload=True,
-            limit=top_k // 2,
+            limit=top_k,
         )
 
         return [point.model_dump()["payload"] for point in results.points][:limit]

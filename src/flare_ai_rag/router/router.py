@@ -117,6 +117,9 @@ class QueryRouter(BaseQueryRouter):
             self.router_config.clarify_option,
             self.router_config.reject_option,
         }
+        if classification == self.router_config.clarify_option:
+            logger.info("CLARIFY", reason=parse_chat_response_as_json(response).get("reason", ""))
+
         if classification not in valid_options:
             classification = self.router_config.clarify_option
 
@@ -157,5 +160,4 @@ class QueryImprovementRouter(BaseQueryRouter):
             response_schema=response_schema,
         )
 
-        print(prompt)
         return response.text

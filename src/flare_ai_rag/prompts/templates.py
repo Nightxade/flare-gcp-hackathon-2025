@@ -136,12 +136,16 @@ The user provided the following query regarding the Flare blockchain technology:
 
 "${user_input}"
 
+${history_context}
+
 Follow these rules:
-- Please rewrite and expand this query to improve retrieval quality of a vector embedding.
-- Please make sure to add new, relevant keywords.
-- Limit your improved query to less than 200 characters.
+- Adapt the user input to fit the context of the chat history, if necessary.
+- Rewrite and expand this query to improve retrieval quality of a vector embedding.
+- Make sure to add new, relevant keywords.
+- Limit your improved query to less than 300 characters.
 - Do not distort the query's original meaning too much.
 
 MAKE SURE YOU ONLY INCLUDE THE IMPROVED QUERY IN THE FINAL RESPONSE.
 DO NOT INCLUDE ANY EXTRA INFORMATION OR YOUR OWN THOUGHTS.
+KEEP THE QUERY AS A QUESTION.
 """

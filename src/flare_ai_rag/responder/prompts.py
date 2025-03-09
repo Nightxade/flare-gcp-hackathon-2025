@@ -16,6 +16,10 @@ explicitly supported by the context.
 Generate an answer to the user query based solely on the given context.
 """
 
-RESPONDER_PROMPT = (
-    """Generate an answer to the user query based solely on the given context."""
-)
+RESPONDER_PROMPT = """
+Generate an answer to the user query based solely on the given context.
+The following information is important! Remember that you have the following context:
+- Previous responses you provided to the user
+- Documents of information relevant to the user query
+The user may ask about previous responses, so make sure to consider that possibility. They may refer to previous responses with "this", "it", or other words.
+"""
