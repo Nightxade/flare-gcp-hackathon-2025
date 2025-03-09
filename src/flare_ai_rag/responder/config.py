@@ -10,6 +10,7 @@ class ResponderConfig:
     model: Model
     system_prompt: str
     query_prompt: str
+    context_size: int
 
     @staticmethod
     def load(model_config: dict[str, Any]) -> "ResponderConfig":
@@ -24,4 +25,5 @@ class ResponderConfig:
             model=model,
             system_prompt=RESPONDER_INSTRUCTION,
             query_prompt=RESPONDER_PROMPT,
+            context_size=model_config["context_size"]
         )

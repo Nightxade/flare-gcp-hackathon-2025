@@ -27,17 +27,25 @@ class GeminiResponder(BaseResponder):
         :param retrieved_documents: A list of dictionaries containing retrieved docs.
         :return: The generated answer as a string.
         """
+
+        # Build Context from response history
+        history_context = """
+        List of previous 5 or less responses.
+        Response 1 is the most recent response, and its tokens should be weighted more heavily.
+        As the index of the response increases, its recency decreases, and the weight on its tokens should similarly decrease.
+        Here is the list:
+        """
+
+        for idx, chat in enumerate(self.client.chat_history, start=1):
+            history_context += f"Response {idx}:\n{chat}\n\n"
+
+
         # Build context from the retrieved documents.
         doc_context = "List of retrieved documents:\n"
 
-        for idx, doc in enumerate(retrieved_documents, start=1):
+        for idx, doc in enumerate(retrieved_documents[::-1], start=1):
             identifier = doc.get("filename", f"Doc{idx}")
             doc_context += f"Document {identifier}:\n{doc.get('text', '')}\n\n"
-
-        # Build Context from response history
-        history_context = "Response history:\n"
-        for idx, chat in enumerate(self.client.chat_history, start=1):
-            history_context += f"Response {idx}:\n{chat}\n\n"
 
         # Compose the prompt
         prompt = (
@@ -47,6 +55,8 @@ class GeminiResponder(BaseResponder):
             + self.responder_config.query_prompt
         )
 
+        print(f'\n{prompt}\n')
+
         # Use the generate method of GeminiProvider to obtain a response.
         response = self.client.generate(
             prompt,
@@ -55,6 +65,8 @@ class GeminiResponder(BaseResponder):
         )
 
         self.client.chat_history.append(response.text)
+        if len(self.client.chat_history) > self.responder_config.context_size:
+            self.client.chat_history = self.client.chat_history[1:]
 
         return response.text
 
