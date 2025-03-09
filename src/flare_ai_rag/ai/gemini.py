@@ -134,6 +134,7 @@ class GeminiProvider(BaseAIProvider):
                     - candidate_count: Number of generated candidates
                     - prompt_feedback: Feedback on the input prompt
         """
+
         response = self.model.generate_content(
             prompt,
             generation_config=GenerationConfig(

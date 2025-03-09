@@ -27,15 +27,23 @@ class GeminiResponder(BaseResponder):
         :param retrieved_documents: A list of dictionaries containing retrieved docs.
         :return: The generated answer as a string.
         """
-        context = "List of retrieved documents:\n"
-
         # Build context from the retrieved documents.
+        doc_context = "List of retrieved documents:\n"
+
         for idx, doc in enumerate(retrieved_documents, start=1):
             identifier = doc.get("filename", f"Doc{idx}")
-            context += f"Document {identifier}:\n{doc.get('text', '')}\n\n"
+            doc_context += f"Document {identifier}:\n{doc.get('text', '')}\n\n"
+
+        # Build Context from response history
+        history_context = "Response history:\n"
+        for idx, chat in enumerate(self.client.chat_history, start=1):
+            history_context += f"Response {idx}:\n{chat}\n\n"
 
         # Compose the prompt
-        prompt = context + f"User query: {query}\n" + self.responder_config.query_prompt
+        prompt = (history_context
+                    + doc_context
+                    + f"User query: {query}\n"
+                    + self.responder_config.query_prompt)
 
         # Use the generate method of GeminiProvider to obtain a response.
         response = self.client.generate(
@@ -43,6 +51,9 @@ class GeminiResponder(BaseResponder):
             response_mime_type=None,
             response_schema=None,
         )
+
+        self.client.chat_history.append(response.text)
+
 
         return response.text
 
