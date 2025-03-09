@@ -1,21 +1,13 @@
-import pandas as pd
-import sys
 import os
-from typing import Any, override
+import sys
+from typing import Any
 
-import numpy.typing as npt
-import structlog
-from fastembed import LateInteractionTextEmbedding, SparseEmbedding, SparseTextEmbedding
-from google.generativeai.client import configure
-from google.generativeai.embedding import (
-    EmbeddingTaskType,
-)
-from google.generativeai.embedding import (
-    embed_content as _embed_content,
-)
-from google.generativeai.generative_models import ChatSession, GenerativeModel
-from google.generativeai.types import GenerationConfig
+import pandas as pd
 from dotenv import load_dotenv
+from google.generativeai.client import configure
+from google.generativeai.generative_models import GenerativeModel
+from google.generativeai.types import GenerationConfig
+
 
 class GeminiSplitter:
     def __init__(self, api_key: str, model: str) -> None:
@@ -30,7 +22,7 @@ class GeminiSplitter:
         response_mime_type: str | None = None,
         response_schema: Any | None = None,
     ) -> str:
-            
+
         response = self.model.generate_content(
             prompt,
             generation_config=GenerationConfig(
@@ -43,7 +35,7 @@ class GeminiSplitter:
 load_dotenv()
 
 MAX_SIZE = 1024 * 1024 * 5
-df = pd.read_csv('src/data/docs.csv')
+df = pd.read_csv("src/data/docs.csv")
 model = "gemini-2.0-flash"
 GEMINI_API_KEY = str(os.getenv("GEMINI_API_KEY"))
 responder = GeminiSplitter(GEMINI_API_KEY, model)
@@ -65,10 +57,10 @@ def split(content : str):
 new_rows = []
 for _, row in df.iterrows():
     content_size = getsize(row)
-    
+
     if content_size > MAX_SIZE:
         chunks = split(row["Contents"])
-        
+
         for i, chunk in enumerate(chunks):
             new_row = row.copy()
             new_row["Contents"] = chunk

@@ -114,10 +114,11 @@ class ChatRouter:
             SemanticRouterResponse: Determined route for the message
         """
         try:
-            message = self.ai.history_context() + message
             prompt, mime_type, schema = self.prompts.get_formatted_prompt(
                 "semantic_router", user_input=message
             )
+            prompt = self.responder.client.history_context() + prompt
+            print(prompt)
             route_response = self.ai.generate(
                 prompt=prompt, response_mime_type=mime_type, response_schema=schema
             )
