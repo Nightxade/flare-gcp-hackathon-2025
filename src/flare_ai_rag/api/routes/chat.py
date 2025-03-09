@@ -7,7 +7,7 @@ from flare_ai_rag.attestation import Vtpm, VtpmAttestationError
 from flare_ai_rag.prompts import PromptService, SemanticRouterResponse
 from flare_ai_rag.responder import GeminiResponder
 from flare_ai_rag.retriever import QdrantRetriever
-from flare_ai_rag.router import GeminiRouter
+from flare_ai_rag.router import BaseQueryRouter
 
 logger = structlog.get_logger(__name__)
 router = APIRouter()
@@ -36,7 +36,8 @@ class ChatRouter:
         self,
         router: APIRouter,
         ai: GeminiProvider,
-        query_router: GeminiRouter,
+        query_router: BaseQueryRouter,
+        query_improvement_router: BaseQueryRouter,
         retriever: QdrantRetriever,
         responder: GeminiResponder,
         attestation: Vtpm,
@@ -59,6 +60,7 @@ class ChatRouter:
         self._router = router
         self.ai = ai
         self.query_router = query_router
+        self.query_improvement_router = query_improvement_router
         self.retriever = retriever
         self.responder = responder
         self.attestation = attestation
@@ -148,7 +150,7 @@ class ChatRouter:
 
         return await handler(message)
 
-    async def handle_rag_pipeline(self, message: str) -> dict[str, str]:
+    async def handle_rag_pipeline(self, query: str) -> dict[str, str]:
         """
         Handle attestation requests.
 
@@ -158,9 +160,18 @@ class ChatRouter:
         Returns:
             dict[str, str]: Response containing attestation request
         """
-        # Step 1. Classify the user query.
+        # Step 1. Improve the user query with Gemini
         prompt, mime_type, schema = self.prompts.get_formatted_prompt(
-            "rag_router", user_input=message
+            "query_improvement", user_input=query
+        )
+        improved_query = self.query_improvement_router.route_query(
+            prompt=prompt, response_mime_type=mime_type, response_schema=schema
+        )
+        self.logger.info("Query improved", improved_query=improved_query)
+
+        # Step 2. Classify the user query.
+        prompt, mime_type, schema = self.prompts.get_formatted_prompt(
+            "rag_router", user_input=improved_query
         )
         classification = self.query_router.route_query(
             prompt=prompt, response_mime_type=mime_type, response_schema=schema
@@ -168,12 +179,12 @@ class ChatRouter:
         self.logger.info("Query classified", classification=classification)
 
         if classification == "ANSWER":
-            # Step 2. Retrieve relevant documents.
-            retrieved_docs = self.retriever.hybrid_search(message)
+            # Step 3. Retrieve relevant documents.
+            retrieved_docs = self.retriever.hybrid_search(query)
             self.logger.info("Documents retrieved")
 
-            # Step 3. Generate the final answer.
-            answer = self.responder.generate_response(message, retrieved_docs)
+            # Step 4. Generate the final answer.
+            answer = self.responder.generate_response(query, retrieved_docs)
             self.logger.info("Response generated", answer=answer)
             return {"classification": classification, "response": answer}
 

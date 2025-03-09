@@ -19,14 +19,17 @@ from flare_ai_rag.attestation import Vtpm
 from flare_ai_rag.prompts import PromptService
 from flare_ai_rag.responder import GeminiResponder, ResponderConfig
 from flare_ai_rag.retriever import QdrantRetriever, RetrieverConfig, generate_collection
-from flare_ai_rag.router import GeminiRouter, RouterConfig
+from flare_ai_rag.router import BaseQueryRouter, GeminiRouter, QueryImprovementRouter, RouterConfig
 from flare_ai_rag.settings import settings
 from flare_ai_rag.utils import load_json
 
 logger = structlog.get_logger(__name__)
 
 
-def setup_router(input_config: dict) -> tuple[GeminiProvider, GeminiRouter]:
+def setup_router(
+        input_config: dict,
+        router_model: type[BaseQueryRouter]
+    ) -> tuple[GeminiProvider, BaseQueryRouter]:
     """Initialize a Gemini Provider for routing."""
     # Setup router config
     router_model_config = input_config["router_model"]
@@ -37,7 +40,7 @@ def setup_router(input_config: dict) -> tuple[GeminiProvider, GeminiRouter]:
     gemini_provider = GeminiProvider(
         api_key=settings.gemini_api_key, model=router_config.model.model_id
     )
-    gemini_router = GeminiRouter(client=gemini_provider, config=router_config)
+    gemini_router = router_model(client=gemini_provider, config=router_config)
 
     return gemini_provider, gemini_router
 
@@ -135,8 +138,11 @@ def create_app() -> FastAPI:
     df_docs = pd.read_csv(settings.data_path / "docs.csv", delimiter=",")
     logger.info("Loaded CSV Data.", num_rows=len(df_docs))
 
-    # Set up the RAG components: 1. Gemini Provider
-    base_ai, router_component = setup_router(input_config)
+    # Set up the RAG components: 1a. Gemini Provider
+    base_ai, gemini_router = setup_router(input_config, GeminiRouter)
+
+    # 1b. Query Improvement Router
+    base_ai, query_improvement_router = setup_router(input_config, QueryImprovementRouter)
 
     # 2a. Set up Qdrant client.
     qdrant_client = setup_qdrant(input_config)
@@ -151,7 +157,8 @@ def create_app() -> FastAPI:
     chat_router = ChatRouter(
         router=APIRouter(),
         ai=base_ai,
-        query_router=router_component,
+        query_router=gemini_router,
+        query_improvement_router=query_improvement_router,
         retriever=retriever_component,
         responder=responder_component,
         attestation=Vtpm(simulate=settings.simulate_attestation),
