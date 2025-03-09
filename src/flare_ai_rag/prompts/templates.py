@@ -73,7 +73,9 @@ Examples:
 """
 
 SCRAPE: Final = """
-
+Use this when scraping data about a specific blockchain/crypto/ticker
+Your role is to summarize and generate insights for the data without making up any information.
+Make sure the data is presented in an easy to read and understandable manner.
 """
 
 RAG_RESPONDER: Final = """

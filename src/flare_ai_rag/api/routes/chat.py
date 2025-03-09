@@ -145,9 +145,9 @@ class ChatRouter:
         """
         handlers = {
             SemanticRouterResponse.RAG_ROUTER: self.handle_rag_pipeline,
+            SemanticRouterResponse.SCRAPE: self.handle_scrape,
             SemanticRouterResponse.REQUEST_ATTESTATION: self.handle_attestation,
             SemanticRouterResponse.CONVERSATIONAL: self.handle_conversation,
-            SemanticRouterResponse.SCRAPE: self.handle_scrape,
         }
 
         handler = handlers.get(route)
