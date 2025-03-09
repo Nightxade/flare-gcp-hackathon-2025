@@ -284,20 +284,35 @@ class ModelLateEmbedding:
 
 
 
-class GeminiSplitter:
+class GeminiGeneric(BaseAIProvider):
     def __init__(self, api_key: str, model: str) -> None:
         configure(api_key=api_key)
         self.model = GenerativeModel(
             model_name=model
         )
 
+    @override
     def generate(
         self,
         prompt: str,
         response_mime_type: str | None = None,
         response_schema: Any | None = None,
-    ) -> str:
-            
+    ) -> ModelResponse:
+        """
+        Generate content using the Gemini model.
+
+        Args:
+            prompt (str): Input prompt for content generation
+            response_mime_type (str | None): Expected MIME type for the response
+            response_schema (Any | None): Schema defining the response structure
+
+        Returns:
+            ModelResponse: Generated content with metadata including:
+                - text: Generated text content
+                - raw_response: Complete Gemini response object
+                - metadata: Additional response information
+        """
+
         response = self.model.generate_content(
             prompt,
             generation_config=GenerationConfig(
@@ -305,4 +320,20 @@ class GeminiSplitter:
             ),
         )
 
-        return response.text
+        return ModelResponse(
+             text=response.text,
+             raw_response=response,
+             metadata={},
+        )
+
+    @override
+    def reset(self) -> None:
+        return super().reset()
+
+    @override
+    def reset_model(self, model: str, **kwargs: str) -> None:
+        return super().reset_model(model, **kwargs)
+
+    @override
+    def send_message(self, msg: str) -> ModelResponse:
+        return super().send_message(msg)
