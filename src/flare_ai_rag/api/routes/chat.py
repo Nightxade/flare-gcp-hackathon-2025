@@ -251,7 +251,7 @@ class ChatRouter:
         return {"response": response.text}
     
     async def handle_scrape(self, query: str) -> dict[str, str]:
-        prompt = f"Given the following query, return only the ticker that is being asked for: {query}"
+        prompt = f"Find the ticker in the following query, return only the ticker: {query}"
         ticker = self.ai.generate(prompt=prompt).text
         data = scrape(ticker)
         prompt = f"Summarize and generate insights for the data. Present it to the user in a clear and simple manner. Do not make up information. {data}"

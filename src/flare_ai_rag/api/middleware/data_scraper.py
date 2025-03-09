@@ -2,7 +2,6 @@ import requests
 from bs4 import BeautifulSoup
 
 def scrape(ticker: str):
-    ticker = ticker.upper()
     url = f"https://finance.yahoo.com/quote/{ticker}/history/?period1=1710008248&period2=1741540639&filter=history&frequency=1d"
     headers = {
         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
