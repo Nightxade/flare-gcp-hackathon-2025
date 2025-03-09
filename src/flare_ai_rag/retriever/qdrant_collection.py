@@ -128,6 +128,7 @@ def generate_collection(
 
     values = [(i[0], i[1][1]) for i in enumerate(df_docs.iterrows())]
     points = list(tqdm(map(add_point, values)))
+    points = list(filter(lambda a: a is not None, points))
     
     if points:
         qdrant_client.upsert(
