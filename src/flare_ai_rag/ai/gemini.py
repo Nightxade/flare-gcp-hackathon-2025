@@ -246,6 +246,7 @@ class ModelSparseEmbedding:
         embeddings = list(self.model.passage_embed([contents]))
         return embeddings[0]
 
+
 class ModelLateEmbedding:
     def __init__(self, embedding_model: str) -> None:
         self.model = LateInteractionTextEmbedding(embedding_model)

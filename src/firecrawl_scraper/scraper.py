@@ -10,7 +10,11 @@ load_dotenv()
 FIRECRAWL_API_KEY = os.getenv("FIRECRAWL_API_KEY")
 app = FirecrawlApp(api_key=FIRECRAWL_API_KEY)
 
-base_url = ["https://docs.flare.network/", "https://github.com/flare-foundation", "https://flare.network/news"]
+base_url = [
+    "https://docs.flare.network/",
+    "https://github.com/flare-foundation",
+    "https://flare.network/news",
+]
 output_file = "src/firecrawl_scraper/crawl_output.csv"
 lastrequest = None
 
@@ -20,7 +24,7 @@ def find_crawl(url: str):
         crawl_result = app.crawl_url(
             url=url,
             params={
-                #"limit": 2,
+                # "limit": 2,
                 "allowBackwardLinks": False,
                 "allowExternalLinks": False,
                 "scrapeOptions": {
@@ -60,5 +64,6 @@ def save_crawl_results(url: list):
             print(f"Error saving data to CSV: {e}")
 
     print(f"Crawl data saved to {output_file}")
+
 
 save_crawl_results(base_url)

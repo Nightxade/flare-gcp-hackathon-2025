@@ -40,10 +40,12 @@ class GeminiResponder(BaseResponder):
             history_context += f"Response {idx}:\n{chat}\n\n"
 
         # Compose the prompt
-        prompt = (history_context
-                    + doc_context
-                    + f"User query: {query}\n"
-                    + self.responder_config.query_prompt)
+        prompt = (
+            history_context
+            + doc_context
+            + f"User query: {query}\n"
+            + self.responder_config.query_prompt
+        )
 
         # Use the generate method of GeminiProvider to obtain a response.
         response = self.client.generate(
@@ -53,7 +55,6 @@ class GeminiResponder(BaseResponder):
         )
 
         self.client.chat_history.append(response.text)
-
 
         return response.text
 

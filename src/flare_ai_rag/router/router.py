@@ -122,6 +122,7 @@ class QueryRouter(BaseQueryRouter):
 
         return classification
 
+
 class QueryImprovementRouter(BaseQueryRouter):
     """
     A simple router that uses GCloud's Gemini to improve user query quality.
