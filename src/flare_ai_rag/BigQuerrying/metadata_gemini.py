@@ -20,8 +20,9 @@ def extract_metadata(title, text):
     
     Extract metadata:
     - Generate a summary (max 50 words)  
-    - Identify relevant keywords (max 5)
-    - Identify the category (e.g., DeFi, Layer 1, Regulations)
+    - Identify relevant keywords (max 5) Place a special emphasis on [blockchain, Flare, oracle, crypto, smart contract, staking, consensus,
+   gas, node]
+    - Identify the category (e.g., DeFi, Layer 1, Regulations). 
     """
     # generating summary may not be relevant
     response = client.models.generate_content(
@@ -33,7 +34,7 @@ def extract_metadata(title, text):
     # or maybe return response.txt
 
 # arguments for 
-df["Markdown"] = df.iloc[:, 1].apply(extract_metadata)
+df["metadata"] = df.apply(lambda row: extract_metadata(row.iloc[0], row.iloc[1]), axis = 1)
  
  # Expand JSON fields into separate columns (gemini returns json)
 df["summary"] = df["metadata"].apply(lambda x: x.get("summary", ""))

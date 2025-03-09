@@ -2,7 +2,7 @@ import pandas as pd
 import html2text
 
 df = pd.read_csv("src/firecrawl_scraper/crawl_output.csv")
-print(df.columns)
+# print(df.columns)
 
 
 converter = html2text.HTML2Text()
@@ -16,8 +16,8 @@ def convert_html(html_content):
     # convert html to markdown
 
 
-df.iloc[:, 1] = df.iloc[:, 1].apply(convert_html)
-df.rename(columns={df.columns[1]: "Markdown"}, inplace=True)
-print(df.head())
+df.iloc[0] = df.iloc[0].apply(convert_html)
+df.rename(columns={df.columns[0]: "Markdown"}, inplace=True)
+# print(df.head())
 df.to_csv("markdownedData.csv")
 # maybe we just want to send ONLY the markdowned data. So I replaced the html file with markdown 
