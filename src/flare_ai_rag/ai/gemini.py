@@ -288,3 +288,28 @@ class ModelLateEmbedding:
             list[float]: The generated embedding vector.
         """
         return next(iter(self.model.passage_embed([contents])))
+
+
+
+class GeminiSplitter:
+    def __init__(self, api_key: str, model: str) -> None:
+        configure(api_key=api_key)
+        self.model = GenerativeModel(
+            model_name=model
+        )
+
+    def generate(
+        self,
+        prompt: str,
+        response_mime_type: str | None = None,
+        response_schema: Any | None = None,
+    ) -> str:
+            
+        response = self.model.generate_content(
+            prompt,
+            generation_config=GenerationConfig(
+                response_mime_type=response_mime_type, response_schema=response_schema
+            ),
+        )
+
+        return response.text
