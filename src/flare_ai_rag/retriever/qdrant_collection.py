@@ -61,7 +61,7 @@ def generate_collection(
     points = []
     for idx, (_, row) in tqdm(enumerate(
         df_docs.iterrows(), start=1
-    ):  # Using _ for unused variable
+    )):  # Using _ for unused variable
         try:
             content = row["Contents"]
         except:
