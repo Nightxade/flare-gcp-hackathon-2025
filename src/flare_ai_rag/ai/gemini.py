@@ -189,10 +189,10 @@ class GeminiProvider(BaseAIProvider):
     def history_context(self) -> str:
         # Build Context from response history
         history_context = f"""
-        List of previous {len(self.chat_history)} responses.
-        Response 1 is the most recent response, and its tokens should be weighted more heavily.
-        As the index of the response increases, its recency decreases, and the weight on its tokens should similarly decrease.
-        Here is the list:
+List of previous {len(self.chat_history)} responses.
+Response 1 is the most recent response, and its tokens should be weighted more heavily.
+As the index of the response increases, its recency decreases, and the weight on its tokens should similarly decrease.
+Here is the list:
         """
 
         for idx, chat in enumerate(self.chat_history, start=1):

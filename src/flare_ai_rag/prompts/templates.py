@@ -7,6 +7,7 @@ choose the most specific matching category.
 Categories (in order of precedence):
 1. RAG_ROUTER
    • Use when input is a question about Flare Networks or blockchains related aspects
+   • Use when an input references a previous response, commonly when "it" or "that" is used
    • Queries specifically request information about the Flare Networks or blockchains
    • Keywords: blockchain, Flare, oracle, crypto, smart contract, staking, consensus,
    gas, node
@@ -25,7 +26,7 @@ Categories (in order of precedence):
 Input: ${user_input}
 
 Instructions:
-- Choose ONE category only
+- Choose ONE category only from the list "RAG_ROUTER", "REQUEST_ATTESTATION", "CONVERSATIONAL"
 - Select most specific matching category
 - Default to CONVERSATIONAL if unclear
 - Ignore politeness phrases or extra context

@@ -114,13 +114,15 @@ class ChatRouter:
             SemanticRouterResponse: Determined route for the message
         """
         try:
-            message = self.ai.history_context() + message
             prompt, mime_type, schema = self.prompts.get_formatted_prompt(
                 "semantic_router", user_input=message
             )
+            prompt = self.responder.client.history_context() + prompt
+            print(prompt)
             route_response = self.ai.generate(
                 prompt=prompt, response_mime_type=mime_type, response_schema=schema
             )
+            print(route_response.text)
             return SemanticRouterResponse(route_response.text)
         except Exception as e:
             self.logger.exception("routing_failed", error=str(e))
@@ -173,6 +175,7 @@ class ChatRouter:
         """
         for idx, chat in enumerate(self.responder.client.chat_history, start=1):
             history_context += f"Response {idx}:\n{chat}\n\n"
+        query = history_context + query
 
         prompt, mime_type, schema = self.prompts.get_formatted_prompt(
             "query_improvement", user_input=query
