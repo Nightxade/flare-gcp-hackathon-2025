@@ -141,14 +141,15 @@ class GeminiProvider(BaseAIProvider):
                 response_mime_type=response_mime_type, response_schema=response_schema
             ),
         )
-        self.logger.debug("generate", prompt=prompt, response_text=response.text)
+        # self.logger.debug("generate", prompt=prompt, response_text=response.text)
+
         return ModelResponse(
-            text=response.text,
-            raw_response=response,
-            metadata={
-                "candidate_count": len(response.candidates),
-                "prompt_feedback": response.prompt_feedback,
-            },
+             text=response.text,
+             raw_response=response,
+             metadata={
+                 "candidate_count": len(response.candidates),
+                 "prompt_feedback": response.prompt_feedback,
+             },
         )
 
     @override
@@ -184,6 +185,20 @@ class GeminiProvider(BaseAIProvider):
                 "prompt_feedback": response.prompt_feedback,
             },
         )
+
+    def history_context(self) -> str:
+        # Build Context from response history
+        history_context = f"""
+List of previous {len(self.chat_history)} responses.
+Response 1 is the most recent response, and its tokens should be weighted more heavily.
+As the index of the response increases, its recency decreases, and the weight on its tokens should similarly decrease.
+Here is the list:
+        """
+
+        for idx, chat in enumerate(self.chat_history, start=1):
+            history_context += f"Response {idx}:\n{chat}\n\n"
+
+        return history_context
 
 
 class GeminiDenseEmbedding:
@@ -266,3 +281,28 @@ class ModelLateEmbedding:
             list[float]: The generated embedding vector.
         """
         return next(iter(self.model.passage_embed([contents])))
+
+
+
+class GeminiSplitter:
+    def __init__(self, api_key: str, model: str) -> None:
+        configure(api_key=api_key)
+        self.model = GenerativeModel(
+            model_name=model
+        )
+
+    def generate(
+        self,
+        prompt: str,
+        response_mime_type: str | None = None,
+        response_schema: Any | None = None,
+    ) -> str:
+            
+        response = self.model.generate_content(
+            prompt,
+            generation_config=GenerationConfig(
+                response_mime_type=response_mime_type, response_schema=response_schema
+            ),
+        )
+
+        return response.text

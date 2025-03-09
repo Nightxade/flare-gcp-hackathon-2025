@@ -117,9 +117,12 @@ class ChatRouter:
             prompt, mime_type, schema = self.prompts.get_formatted_prompt(
                 "semantic_router", user_input=message
             )
+            prompt = self.responder.client.history_context() + prompt
+            print(prompt)
             route_response = self.ai.generate(
                 prompt=prompt, response_mime_type=mime_type, response_schema=schema
             )
+            print(route_response.text)
             return SemanticRouterResponse(route_response.text)
         except Exception as e:
             self.logger.exception("routing_failed", error=str(e))
@@ -161,6 +164,19 @@ class ChatRouter:
             dict[str, str]: Response containing attestation request
         """
         # Step 1. Improve the user query with Gemini
+
+        # Build Context from response history
+        history_context = f"""
+        Also, here is a list of your previous {len(self.responder.client.chat_history)} chat responses to the user.
+        USE THIS CONTEXT TO HELP YOU INTERPRET AND REWRITE THE USER'S QUERY.
+        Response 1 is the most recent response, and its tokens should be weighted more heavily.
+        As the index of the response increases, its recency decreases, and the weight on its tokens should similarly decrease.
+        Here is the list:
+        """
+        for idx, chat in enumerate(self.responder.client.chat_history, start=1):
+            history_context += f"Response {idx}:\n{chat}\n\n"
+        query = history_context + query
+
         prompt, mime_type, schema = self.prompts.get_formatted_prompt(
             "query_improvement", user_input=query
         )
