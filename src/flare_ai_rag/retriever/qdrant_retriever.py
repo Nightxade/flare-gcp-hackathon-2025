@@ -63,7 +63,7 @@ class QdrantRetriever(BaseRetriever):
         return query_vector.indices.tolist(), query_vector.values.tolist()
 
     @override
-    def hybrid_search(self, query: str, top_k: int = 100, limit: int = 25) -> list[dict]:
+    def hybrid_search(self, query: str, top_k: int = 100, limit: int = 50) -> list[dict]:
         """
         Perform hybrid search by combining dense and sparse embeddings with RRF.
 
