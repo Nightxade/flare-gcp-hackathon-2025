@@ -135,20 +135,42 @@ class GeminiProvider(BaseAIProvider):
                     - prompt_feedback: Feedback on the input prompt
         """
 
-        response = self.model.generate_content(
+        response0 = self.model.generate_content(
             prompt,
             generation_config=GenerationConfig(
                 response_mime_type=response_mime_type, response_schema=response_schema
             ),
         )
-        self.logger.debug("generate", prompt=prompt, response_text=response.text)
+        self.logger.debug("initial", prompt=prompt, response_text=response0.text)
+
+        improvement_str = f"""
+        Improve the result of the following Gemini response based on the listed metrics.
+        Do NOT make up any information in your responses.
+
+        Gemini response (str) : {response0.text}
+
+        Metrics:
+        1. Accuracy of the information, do not make any information up no matter what, specify if you cannot answer the question with the information you were given.
+        2. Clarity - make it easy for both beginners and professionals to understand, but still retain accuracy
+        3. Format the response to be easily readable by users.
+
+        Returns:
+            ModelResponse: Generated content with no metadata:
+                - text: Generated text content
+                - raw_response: Complete Gemini response object
+        """
+        response1 = self.model.generate_content(
+            improvement_str,
+            generation_config=GenerationConfig(
+                response_mime_type=response_mime_type, response_schema=response_schema
+            ),
+        )
+        self.logger.debug("improved", prompt=prompt, response_text=response1.text)
+
         return ModelResponse(
-            text=response.text,
-            raw_response=response,
-            metadata={
-                "candidate_count": len(response.candidates),
-                "prompt_feedback": response.prompt_feedback,
-            },
+            text=response1.text,
+            raw_response=response1,
+            metadata={},
         )
 
     @override
