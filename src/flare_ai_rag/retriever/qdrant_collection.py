@@ -59,9 +59,9 @@ def generate_collection(
 
     # Process Embeddings
     points = []
-
-    def add_point(a: tuple) -> PointStruct | None:
-        idx, row = a[0], a[1]
+    for idx, (_, row) in tqdm(enumerate(
+        df_docs.iterrows(), start=1
+    )):  # Using _ for unused variable
         content = row["Contents"]
 
         # check validity
@@ -70,7 +70,7 @@ def generate_collection(
                 "Skipping document due to missing or invalid content.",
                 filename=row["Filename"],
             )
-            return
+            continue
 
         # Gemini Dense Embedding
         try:
@@ -88,20 +88,20 @@ def generate_collection(
                     "Skipping document due to size limit.",
                     filename=row["Filename"],
                 )
-                return
+                continue
             # Log the full traceback for other InvalidArgument errors
             logger.exception(
                 "Error encoding document (InvalidArgument).",
                 filename=row["Filename"],
             )
-            return
+            continue
         except Exception:
             # Log the full traceback for any other errors
             logger.exception(
                 "Error encoding document (general).",
                 filename=row["Filename"],
             )
-            return
+            continue
 
         # Sparse Embeeding
         sparse_embedding = sparse_embedding_client.embed_content(contents=content)
@@ -120,16 +120,13 @@ def generate_collection(
             "dense": dense_embedding,
             "sparse": sparse_vector,
         }
-        return PointStruct(
+        point = PointStruct(
             id=idx,  # Using integer ID starting from 1
             vector=vector,  # type: ignore # ---- NOTE: maybe not a fix ---- #
             payload=payload,
         )
+        points.append(point)
 
-    values = [(i[0], i[1][1]) for i in enumerate(df_docs.iterrows())]
-    points = list(tqdm(map(add_point, values)))
-    points = list(filter(lambda a: a is not None, points))
-    
     if points:
         qdrant_client.upsert(
             collection_name=retriever_config.collection_name,
