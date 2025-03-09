@@ -15,7 +15,7 @@ Categories (in order of precedence):
 2. SCRAPE
    • Use when asked to find data about blockchain prices
    • Queries specifically ask for a certain blockchain/crypto ticker, and to find data on its price
-   • Keywords: scrape, data, ticker, FLR, BTC, ETH
+   • Keywords: scrape, data, ticker, FLR, BTC, ETH, find, price
 
 3. REQUEST_ATTESTATION
    • Keywords: attestation, verify, prove, check enclave
