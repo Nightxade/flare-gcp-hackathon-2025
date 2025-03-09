@@ -61,7 +61,10 @@ def generate_collection(
     for idx, (_, row) in enumerate(
         df_docs.iterrows(), start=1
     ):  # Using _ for unused variable
-        content = row["Contents"]
+        try:
+            content = row["Contents"]
+        except:
+            continue
 
         # check validity
         if not isinstance(content, str):
