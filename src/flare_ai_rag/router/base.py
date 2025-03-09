@@ -13,9 +13,7 @@ class BaseQueryRouter(ABC):
 
     @abstractmethod
     def __init__(
-        self,
-        client: BaseAIProvider | BaseClient,
-        config: RouterConfig
+        self, client: BaseAIProvider | BaseClient, config: RouterConfig
     ) -> None:
         """
         Constructor

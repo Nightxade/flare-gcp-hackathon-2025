@@ -7,9 +7,7 @@ class BaseRetriever(ABC):
         """Perform semantic search using vector embeddings."""
 
     @abstractmethod
-    def keyword_search(
-        self, query: str
-    ) -> tuple[list[int], list[float]]:
+    def keyword_search(self, query: str) -> tuple[list[int], list[float]]:
         """Perform keyword search using vector embeddings."""
 
     @abstractmethod

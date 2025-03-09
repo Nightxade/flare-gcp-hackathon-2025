@@ -19,7 +19,12 @@ from flare_ai_rag.attestation import Vtpm
 from flare_ai_rag.prompts import PromptService
 from flare_ai_rag.responder import GeminiResponder, ResponderConfig
 from flare_ai_rag.retriever import QdrantRetriever, RetrieverConfig, generate_collection
-from flare_ai_rag.router import BaseQueryRouter, GeminiRouter, QueryImprovementRouter, RouterConfig
+from flare_ai_rag.router import (
+    BaseQueryRouter,
+    GeminiRouter,
+    QueryImprovementRouter,
+    RouterConfig,
+)
 from flare_ai_rag.settings import settings
 from flare_ai_rag.utils import load_json
 
@@ -27,9 +32,8 @@ logger = structlog.get_logger(__name__)
 
 
 def setup_router(
-        input_config: dict,
-        router_model: type[BaseQueryRouter]
-    ) -> tuple[GeminiProvider, BaseQueryRouter]:
+    input_config: dict, router_model: type[BaseQueryRouter]
+) -> tuple[GeminiProvider, BaseQueryRouter]:
     """Initialize a Gemini Provider for routing."""
     # Setup router config
     router_model_config = input_config["router_model"]
@@ -142,7 +146,9 @@ def create_app() -> FastAPI:
     base_ai, gemini_router = setup_router(input_config, GeminiRouter)
 
     # 1b. Query Improvement Router
-    base_ai, query_improvement_router = setup_router(input_config, QueryImprovementRouter)
+    base_ai, query_improvement_router = setup_router(
+        input_config, QueryImprovementRouter
+    )
 
     # 2a. Set up Qdrant client.
     qdrant_client = setup_qdrant(input_config)

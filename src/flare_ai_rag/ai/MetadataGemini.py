@@ -1,8 +1,9 @@
-from google import genai
-import os
-import pandas as pd
 import json
+import os
+
+import pandas as pd
 from dotenv import load_dotenv  # this helps protect our api key
+from google import genai
 
 load_dotenv()
 
@@ -24,20 +25,20 @@ def extract_metadata(title, text):
     - Identify the category (e.g., DeFi, Layer 1, Regulations)
     """
     # generating summary may not be relevant
-    response = client.models.generate_content(
-        model="gemini-2.0-flash",
-        contents=prompt
-    )
+    response = client.models.generate_content(model="gemini-2.0-flash", contents=prompt)
 
-    return json.loads(response.text) 
+    return json.loads(response.text)
     # or maybe return response.txt
 
-# arguments for 
+
+# arguments for
 df["Markdown"] = df.iloc[:, 1].apply(extract_metadata)
- 
- # Expand JSON fields into separate columns (gemini returns json)
+
+# Expand JSON fields into separate columns (gemini returns json)
 df["summary"] = df["metadata"].apply(lambda x: x.get("summary", ""))
-df["keywords"] = df["metadata"].apply(lambda x: ", ".join(x.get("keywords", [])))   # Convert list to string
+df["keywords"] = df["metadata"].apply(
+    lambda x: ", ".join(x.get("keywords", []))
+)  # Convert list to string
 df["category"] = df["metadata"].apply(lambda x: x.get("category", ""))
 df.drop(columns=["metadata"], inplace=True)
 

@@ -134,6 +134,7 @@ class GeminiProvider(BaseAIProvider):
                     - candidate_count: Number of generated candidates
                     - prompt_feedback: Feedback on the input prompt
         """
+
         response = self.model.generate_content(
             prompt,
             generation_config=GenerationConfig(
@@ -244,6 +245,7 @@ class ModelSparseEmbedding:
         """
         embeddings = list(self.model.passage_embed([contents]))
         return embeddings[0]
+
 
 class ModelLateEmbedding:
     def __init__(self, embedding_model: str) -> None:
