@@ -13,11 +13,8 @@ Categories (in order of precedence):
    gas, node
 
 2. PREDICTION
-   • Use when asked to predict the value of a specific crypto/blockchain after a specified number of days
-   • Must contain prediction type, such as linear regression, LSTM, Bi-LSTM, GRU
-   • Must contain the specific stock to predict using the specified prediction model
-   • If a prediction type, symbol to predict, or day to predict on is not specified, DO NOT CHOOSE PREDICTION
-   • Keywords: predict, blockchain, crypto, regression, LSTM, Bi-LSTM, GRU, prediction
+   • Use when asked to predict a value of a ticker or symbol
+   • Keywords: predict, blockchain, crypto, regression, LSTM, Bi-LSTM, GRU, prediction, ticker, symbol
 
 3. REQUEST_ATTESTATION
    • Keywords: attestation, verify, prove, check enclave
