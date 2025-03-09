@@ -1,16 +1,10 @@
+import json
 import os
 import sys
 from typing import Any
 
 import pandas as pd
-import json
-import sys
-import os
-from typing import Any, override
-
-import numpy.typing as npt
-import structlog
-from fastembed import LateInteractionTextEmbedding, SparseEmbedding, SparseTextEmbedding
+from dotenv import load_dotenv
 from google.generativeai.client import configure
 from google.generativeai.generative_models import GenerativeModel
 from google.generativeai.types import GenerationConfig
