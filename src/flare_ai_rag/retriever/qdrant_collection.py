@@ -10,6 +10,7 @@ from qdrant_client.models import (
     SparseVectorParams,
     VectorParams,
 )
+from tqdm import tqdm
 
 from flare_ai_rag.ai import (
     EmbeddingTaskType,
@@ -58,9 +59,9 @@ def generate_collection(
 
     # Process Embeddings
     points = []
-    for idx, (_, row) in enumerate(
+    for idx, (_, row) in tqdm(enumerate(
         df_docs.iterrows(), start=1
-    ):  # Using _ for unused variable
+    )):  # Using _ for unused variable
         content = row["Contents"]
 
         # check validity

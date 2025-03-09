@@ -261,6 +261,7 @@ dependencies = [
     { name = "pyopenssl" },
     { name = "qdrant-client" },
     { name = "structlog" },
+    { name = "tqdm" },
     { name = "uvicorn" },
 ]
 
@@ -285,6 +286,7 @@ requires-dist = [
     { name = "pyopenssl", specifier = ">=25.0.0" },
     { name = "qdrant-client", specifier = ">=1.13.2" },
     { name = "structlog", specifier = ">=25.1.0" },
+    { name = "tqdm", specifier = ">=4.67.1" },
     { name = "uvicorn", specifier = ">=0.34.0" },
 ]
 
