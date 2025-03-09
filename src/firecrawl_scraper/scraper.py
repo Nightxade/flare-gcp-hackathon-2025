@@ -58,7 +58,7 @@ def save_crawl_results(url: list):
             lastrequest = time.time()
         except Exception as e:
             print(f"Error saving data to CSV: {e}")
-    
+
     print(f"Crawl data saved to {output_file}")
 
 save_crawl_results(base_url)

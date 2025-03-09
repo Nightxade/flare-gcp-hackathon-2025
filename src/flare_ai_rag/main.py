@@ -19,7 +19,12 @@ from flare_ai_rag.attestation import Vtpm
 from flare_ai_rag.prompts import PromptService
 from flare_ai_rag.responder import GeminiResponder, ResponderConfig
 from flare_ai_rag.retriever import QdrantRetriever, RetrieverConfig, generate_collection
-from flare_ai_rag.router import BaseQueryRouter, GeminiRouter, QueryImprovementRouter, RouterConfig
+from flare_ai_rag.router import (
+    BaseQueryRouter,
+    GeminiRouter,
+    QueryImprovementRouter,
+    RouterConfig,
+)
 from flare_ai_rag.settings import settings
 from flare_ai_rag.utils import load_json
 
