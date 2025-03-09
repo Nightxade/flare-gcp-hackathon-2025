@@ -12,17 +12,12 @@ Categories (in order of precedence):
    • Keywords: blockchain, Flare, oracle, crypto, smart contract, staking, consensus,
    gas, node
 
-2. CALCULATION
-   • Use when asked to predict a value of a ticker or symbol
-   • ALWAYS use when input contans "calculate" or "model"
-   • Keywords: blockchain, crypto, regression, LSTM, Bi-LSTM, GRU, calculate, calculation, ticker, symbol, model
-
-3. REQUEST_ATTESTATION
+2. REQUEST_ATTESTATION
    • Keywords: attestation, verify, prove, check enclave
    • Must specifically request verification or attestation
    • Related to security or trust verification
 
-4. CONVERSATIONAL (default)
+3. CONVERSATIONAL (default)
    • Use when input doesn't clearly match above categories
    • General questions, greetings, or unclear requests
    • Any ambiguous or multi-category inputs
@@ -30,7 +25,7 @@ Categories (in order of precedence):
 Input: ${user_input}
 
 Instructions:
-- Choose ONE category only from the list "RAG_ROUTER", "CALCULATION", "REQUEST_ATTESTATION", "CONVERSATIONAL"
+- Choose ONE category only from the list "RAG_ROUTER", "REQUEST_ATTESTATION", "CONVERSATIONAL"
 - Select most specific matching category
 - Default to CONVERSATIONAL if unclear
 - Ignore politeness phrases or extra context
@@ -58,7 +53,7 @@ Response format:
 }
 
 Processing rules:
-- The response should be exactly one of the four categories
+- The response should be exactly one of the three categories
 - DO NOT infer missing values
 - Normalize response to uppercase
 - The reason should explain why the classification was chosen if and only if the classification is "CLARIFY"
@@ -89,33 +84,6 @@ explicitly supported by the context.
 - Avoid adding any information that is not supported by the context.
 
 Generate an answer to the user query based solely on the given context.
-"""
-
-PREDICTION: Final = """
-Your role is to use a specified prediction algorithm and data to predict the value of a blockchain in a given number of days.
-
-Guidelines:
-- The user must give you a specific algorithm, ticker for crypto or blockchain, and the day to predict.
-- If none of the above are given, politely refuse by telling the user the information you are missing.
-- If you are not given the number of days to train on, default to 30 days.
-- If you are not given which value to train on or predict (high, low, open, close), default to high.
-- You will not make up information, add in unrelated information, and will ask for clarification prompt is unclear.
-
-Steps:
-- User Input -> ${user_input}
-- 'Algorithm' -> Find the algorithm specified by the user in the User Input
-- 'Ticker' -> Return only the ticker specified by the user in User Input
-- 'Train Days' -> The number of days to train on, if not specified by the user, defaults to 30 days; must be an integer
-- 'Predict Day' -> The day difference between today and the specified day the user wants to predict, if not specified, default to 1; must be an integer
-   ex. The difference between today (3/9/2025) and the day the user wants to predict (3/11/2025) is 2
-- 'Train Value' -> The value to train on, either "high", "low", "open", "close". If not specified, default to "high". Return must match one of the 4 strings.
-- 'Test Value' -> The value to test on, either "high", "low", "open", "close". If not specified, default to "high". Return must match one of the 4 strings.
-- 'Data' -> Scrape all the daily data from the table in https://finance.yahoo.com/quote/('Ticker')/history/?period1=(1741504586 - 'Train Days')&period2=1741504586&frequency=1d&filter=history
-   *replace everything in parenthesis with the values from User Input
-
-- Run the specified 'Algorithm' on the 'Train Value', and predict the Test Value on Predict Day
-
-Explain the data used to predict, how the prediction model was trained, and the prediction of the day asked to predict on.
 """
 
 CONVERSATIONAL: Final = """
