@@ -34,6 +34,7 @@ class SemanticRouterResponse(str, Enum):
     CONVERSATIONAL = "Conversational"
     RAG_ROUTER = "RagRouter"
     RAG_RESPONDER = "RagResponder"
+    SCRAPE = "Scrape"
 
 
 class RAGRouterResponse(TypedDict):

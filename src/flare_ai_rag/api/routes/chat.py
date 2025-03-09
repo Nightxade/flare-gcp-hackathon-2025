@@ -9,6 +9,8 @@ from flare_ai_rag.responder import GeminiResponder
 from flare_ai_rag.retriever import QdrantRetriever
 from flare_ai_rag.router import BaseQueryRouter
 
+from src.flare_ai_rag.api.middleware import scrape
+
 logger = structlog.get_logger(__name__)
 router = APIRouter()
 
@@ -145,6 +147,7 @@ class ChatRouter:
             SemanticRouterResponse.RAG_ROUTER: self.handle_rag_pipeline,
             SemanticRouterResponse.REQUEST_ATTESTATION: self.handle_attestation,
             SemanticRouterResponse.CONVERSATIONAL: self.handle_conversation,
+            SemanticRouterResponse.SCRAPE: self.handle_scrape,
         }
 
         handler = handlers.get(route)
@@ -246,3 +249,11 @@ class ChatRouter:
         """
         response = self.ai.send_message(message)
         return {"response": response.text}
+    
+    async def handle_scrape(self, query: str) -> dict[str, str]:
+        prompt = f"Given the following query, return only the ticker that is being asked for: {query}"
+        ticker = self.ai.generate(prompt=prompt).text
+        data = scrape(ticker)
+        prompt = f"Summarize and generate insights for the data. Present it to the user in a clear and simple manner. Do not make up information. {data}"
+        response = self.ai.generate(prompt=prompt)
+        return {'response':response.text}
