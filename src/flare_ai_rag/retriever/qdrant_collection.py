@@ -59,9 +59,9 @@ def generate_collection(
 
     # Process Embeddings
     points = []
-    for idx, (_, row) in tqdm(enumerate(
-        df_docs.iterrows(), start=1
-    )):  # Using _ for unused variable
+
+    def add_point(a: tuple) -> PointStruct | None:
+        idx, row = a[0], a[1]
         content = row["Contents"]
 
         # check validity
@@ -70,7 +70,7 @@ def generate_collection(
                 "Skipping document due to missing or invalid content.",
                 filename=row["Filename"],
             )
-            continue
+            return
 
         # Gemini Dense Embedding
         try:
@@ -88,20 +88,20 @@ def generate_collection(
                     "Skipping document due to size limit.",
                     filename=row["Filename"],
                 )
-                continue
+                return
             # Log the full traceback for other InvalidArgument errors
             logger.exception(
                 "Error encoding document (InvalidArgument).",
                 filename=row["Filename"],
             )
-            continue
+            return
         except Exception:
             # Log the full traceback for any other errors
             logger.exception(
                 "Error encoding document (general).",
                 filename=row["Filename"],
             )
-            continue
+            return
 
         # Sparse Embeeding
         sparse_embedding = sparse_embedding_client.embed_content(contents=content)
@@ -120,13 +120,15 @@ def generate_collection(
             "dense": dense_embedding,
             "sparse": sparse_vector,
         }
-        point = PointStruct(
+        return PointStruct(
             id=idx,  # Using integer ID starting from 1
             vector=vector,  # type: ignore # ---- NOTE: maybe not a fix ---- #
             payload=payload,
         )
-        points.append(point)
 
+    values = [(i[0], i[1][1]) for i in enumerate(df_docs.iterrows())]
+    points = list(tqdm(map(add_point, values)))
+    
     if points:
         qdrant_client.upsert(
             collection_name=retriever_config.collection_name,
