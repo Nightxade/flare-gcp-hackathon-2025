@@ -13,7 +13,7 @@ def scrape(ticker: str):
     table = soup.find('table')
     historical_data = []
     if table:
-        for row in table.find('tbody').find_all('tr')[:30]:
+        for row in table.find('tbody').find_all('tr')[:24]:
             columns = row.find_all('td')
             if len(columns) < 6:
                 continue
