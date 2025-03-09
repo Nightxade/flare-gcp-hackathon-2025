@@ -12,12 +12,17 @@ Categories (in order of precedence):
    • Keywords: blockchain, Flare, oracle, crypto, smart contract, staking, consensus,
    gas, node
 
-2. REQUEST_ATTESTATION
+2. SCRAPE
+   • Use when asked to find data about blockchain prices
+   • Queries specifically ask for a certain blockchain/crypto ticker, and to find data on its price
+   • Keywords: scrape, data, ticker, FLR, BTC, ETH, find, price
+
+3. REQUEST_ATTESTATION
    • Keywords: attestation, verify, prove, check enclave
    • Must specifically request verification or attestation
    • Related to security or trust verification
 
-3. CONVERSATIONAL (default)
+4. CONVERSATIONAL (default)
    • Use when input doesn't clearly match above categories
    • General questions, greetings, or unclear requests
    • Any ambiguous or multi-category inputs
@@ -25,7 +30,7 @@ Categories (in order of precedence):
 Input: ${user_input}
 
 Instructions:
-- Choose ONE category only from the list "RAG_ROUTER", "REQUEST_ATTESTATION", "CONVERSATIONAL"
+- Choose ONE category only from the list "RAG_ROUTER", "SCRAPE", "REQUEST_ATTESTATION", "CONVERSATIONAL"
 - Select most specific matching category
 - Default to CONVERSATIONAL if unclear
 - Ignore politeness phrases or extra context
@@ -65,6 +70,12 @@ Examples:
 - "What is the average block time?" → {"classification": "CLARIFY", "reason": "No specific chain is mentioned."}
 - "How secure is it?" → {"classification": "CLARIFY", "reason": "What does \"it\" refer to?"}
 - "Tell me about Flare." → {"classification": "CLARIFY", "reason": "The query is too vague."}
+"""
+
+SCRAPE: Final = """
+Use this when scraping data about a specific blockchain/crypto/ticker
+Your role is to summarize and generate insights for the data without making up any information.
+Make sure the data is presented in an easy to read and understandable manner.
 """
 
 RAG_RESPONDER: Final = """
