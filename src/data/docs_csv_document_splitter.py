@@ -3,7 +3,14 @@ import sys
 from typing import Any
 
 import pandas as pd
-from dotenv import load_dotenv
+import json
+import sys
+import os
+from typing import Any, override
+
+import numpy.typing as npt
+import structlog
+from fastembed import LateInteractionTextEmbedding, SparseEmbedding, SparseTextEmbedding
 from google.generativeai.client import configure
 from google.generativeai.generative_models import GenerativeModel
 from google.generativeai.types import GenerationConfig
@@ -21,8 +28,8 @@ class GeminiSplitter:
         prompt: str,
         response_mime_type: str | None = None,
         response_schema: Any | None = None,
-    ) -> str:
-
+    ) -> list:
+            
         response = self.model.generate_content(
             prompt,
             generation_config=GenerationConfig(
@@ -30,7 +37,7 @@ class GeminiSplitter:
             ),
         )
 
-        return response.text
+        return json.loads(response.text)
 
 load_dotenv()
 
@@ -40,24 +47,32 @@ model = "gemini-2.0-flash"
 GEMINI_API_KEY = str(os.getenv("GEMINI_API_KEY"))
 responder = GeminiSplitter(GEMINI_API_KEY, model)
 
-def getsize(doc : pd.Series):
-    return sys.getsizeof(str(doc["Contents"])) / 1000000
+def getsize(content : str):
+    return sys.getsizeof(str(content).encode('utf-8'))
 
 def split(content : str):
     prompt = f"""
     Split the following document into meaningful sections based on its contents, ensuring that each part remains as coherent as possible.
-    Return a JSON list of the text segments:
+    Return a JSON list of dictionaries, each with a key "Content" that contains a text segment:
     {content}
 
-    Each "CONTENT" in the json MUST be STRICTLY UNDER 5 megabytes.
+    Each "Content" in the json MUST be STRICTLY UNDER 5 megabytes.
     """
-    response = responder.generate(prompt)
-    return response
+    chunks = responder.generate(prompt)
+    valid_chunks = []
+    for chunk in chunks:
+        text = chunk.get("Content", "")
+        if getsize(text) > MAX_SIZE:
+            valid_chunks.extend(split(text))
+        else:
+            valid_chunks.append(text)
+    
+    return valid_chunks
 
 new_rows = []
 for _, row in df.iterrows():
-    content_size = getsize(row)
-
+    content_size = getsize(row["Contents"])
+    
     if content_size > MAX_SIZE:
         chunks = split(row["Contents"])
 
